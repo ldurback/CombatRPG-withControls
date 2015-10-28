@@ -19,12 +19,11 @@ namespace CombatRPG {
                 this.add.sprite(0, 0, "background");
 
                 this.renderScreen();
-                this.setupInput();
             }
 
             renderScreen() {
-                var menu = <div><button onClick={ e => this.startGame() }>Start Game</button>
-                    <button onClick={ e => this.startDevMenu() }>Dev Menu</button>
+                var menu = <div><div className="selectable selected" onClick={ e => this.startGame() }>Start Game</div>
+                    <div className="selectable" onClick={ e => this.startDevMenu() }>Dev Menu</div>
                 </div>;
                 var target = document.getElementById("main-menu-screen");
 
@@ -32,17 +31,22 @@ namespace CombatRPG {
                 $("#main-menu-screen").show();
             }
 
-            setupInput() {
+            clearScreen() {
+                var clear = <div></div>;
+                var target = document.getElementById("main-menu-screen");
+
+                React.render(clear, target);
+                $("#main-menu-screen").hide();
             }
 
             startGame() {
-                $("#main-menu-screen").hide();
+                this.clearScreen();
 
                 this.game.state.start("EmptyMap", true, false);
             }
 
             startDevMenu() {
-                $("#main-menu-screen").hide();
+                this.clearScreen();
 
                 this.game.state.start("DevMenu", true, false);
             }

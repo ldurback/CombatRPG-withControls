@@ -36,3 +36,7 @@
 #main-menu-screen {
     text-align: center;
 }
+
+.selected {
+    background-color: blue;
+}

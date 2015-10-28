@@ -15,7 +15,7 @@ namespace CombatRPG {
 
             renderScreen() {
                 var menu = <div>
-                    <div onClick={e => { this.goToMainMenu() } }>Main Menu</div>
+                    <div className="selectable selected" onClick={e => { this.goToMainMenu() } }>Main Menu</div>
                 </div>;
                 var target = document.getElementById("dev-menu-screen");
 
@@ -23,12 +23,20 @@ namespace CombatRPG {
                 $("#dev-menu-screen").show();
             }
 
+            clearScreen() {
+                var clear = <div></div>;
+                var target = document.getElementById("dev-menu-screen");
+
+                React.render(clear, target);
+                $("#dev-menu-screen").hide();
+            }
+
             setupInput() {
 
             }
 
             goToMainMenu() {
-                $("#dev-menu-screen").hide();
+                this.clearScreen();
 
                 this.game.state.start("MainMenu", true, false);
             }

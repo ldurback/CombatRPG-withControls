@@ -11,7 +11,7 @@ namespace CombatRPG {
             }
 
             setupInput() {
-                this.game.input.keyboard.addCallbacks(this, null, null, this.onKeyPress);
+                this.game.input.keyboard.addCallbacks(this, this.onKeyDown);
             }
 
             renderScreen() {
@@ -26,14 +26,23 @@ namespace CombatRPG {
                 $("#game-over-screen").on("click", () => { this.advanceToNextState() });
             }
 
-            advanceToNextState() {
-                  $("#main-menu-screen").hide();
+            clearScreen() {
+                var clear = <div></div>;
+                var target = document.getElementById("game-over-screen");
 
-                  this.game.state.start("EmptyMap", true, false);
+                React.render(clear, target);
+                $("#game-over-screen").hide();
             }
 
-            onKeyPress(event: KeyboardEvent) {
+            advanceToNextState() {
+                this.clearScreen();
+
+                this.game.state.start("EmptyMap", true, false);
+            }
+
+            onKeyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
+                this.game.input.keyboard.onDownCallback = null;
             }
         }
     }
