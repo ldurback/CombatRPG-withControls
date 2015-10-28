@@ -23,7 +23,7 @@ namespace CombatRPG {
                 $("#dev-menu-screen").show();
             }
 
-            clearScreen() {
+            exitScreen() {
                 var clear = <div></div>;
                 var target = document.getElementById("dev-menu-screen");
 
@@ -36,7 +36,7 @@ namespace CombatRPG {
             }
 
             goToMainMenu() {
-                this.clearScreen();
+                this.exitScreen();
 
                 this.game.state.start("MainMenu", true, false);
             }

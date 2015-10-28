@@ -29,23 +29,24 @@ namespace CombatRPG {
                 $("#splash-screen").on("click", () => { this.advanceToNextState() });
             }
 
-            clearScreen() {
+            exitScreen() {
                 var clear = <div></div>;
                 var target = document.getElementById("splash-screen");
 
                 React.render(clear, target);
                 $("#splash-screen").hide();
+
+                this.game.input.keyboard.onDownCallback = null;
             }
 
             advanceToNextState() {
-                this.clearScreen();
+                this.exitScreen();
 
                 this.game.state.start("MainMenu", true, false);
             }
 
             onKeyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
-                this.game.input.keyboard.onDownCallback = null;
             }
         }
     }

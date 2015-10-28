@@ -31,7 +31,7 @@ namespace CombatRPG {
                 $("#main-menu-screen").show();
             }
 
-            clearScreen() {
+            exitScreen() {
                 var clear = <div></div>;
                 var target = document.getElementById("main-menu-screen");
 
@@ -40,13 +40,13 @@ namespace CombatRPG {
             }
 
             startGame() {
-                this.clearScreen();
+                this.exitScreen();
 
                 this.game.state.start("EmptyMap", true, false);
             }
 
             startDevMenu() {
-                this.clearScreen();
+                this.exitScreen();
 
                 this.game.state.start("DevMenu", true, false);
             }
