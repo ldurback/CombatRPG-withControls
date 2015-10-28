@@ -5,10 +5,10 @@
                 facing: string;
                 idle: boolean;
 
-                movingUp: boolean;
-                movingDown: boolean;
-                movingLeft: boolean;
-                movingRight: boolean;
+                private movingUp: boolean;
+                private movingDown: boolean;
+                private movingLeft: boolean;
+                private movingRight: boolean;
 
                 constructor(game: Phaser.Game, x: number, y: number) {
                     super(game, x, y, 'character', 104);
@@ -120,7 +120,7 @@
                     this.movingRight = true;
                 }
                 stopMovingRight() {
-                    this.movingRight = true;
+                    this.movingRight = false;
                 }
             }
         }

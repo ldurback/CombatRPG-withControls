@@ -1,4 +1,6 @@
-﻿namespace CombatRPG {
+﻿///<reference path="BaseState.ts" />
+
+namespace CombatRPG {
     export namespace States {
         export class GameOverScreen extends BaseState {
               initialize() {

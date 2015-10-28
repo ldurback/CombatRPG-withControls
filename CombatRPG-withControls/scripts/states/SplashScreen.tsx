@@ -1,4 +1,6 @@
-﻿namespace CombatRPG {
+﻿///<reference path="BaseState.ts" />
+
+namespace CombatRPG {
     export namespace States {
         export class SplashScreen extends BaseState {
             preload() {

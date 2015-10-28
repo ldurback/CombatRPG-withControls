@@ -1,6 +1,7 @@
 ﻿///<reference path="BaseState.ts" />
 ///<reference path="Maps/EmptyMap.ts" />
 
+///<reference path="BaseState.ts" />
 
 namespace CombatRPG {
     export namespace States {
