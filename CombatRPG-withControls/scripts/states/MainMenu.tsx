@@ -1,28 +1,35 @@
-﻿///<reference path="Maps/EmptyMap.ts" />
+﻿///<reference path="BaseState.ts" />
+///<reference path="Maps/EmptyMap.ts" />
+
 
 namespace CombatRPG {
     export namespace States {
-        export class MainMenu extends Phaser.State {
+        export class MainMenu extends BaseState {
             preload() {
                 this.load.image('background', 'assets/images/background.png');
 
                 this.game.state.add("Map", States.Maps.EmptyMap);
             }
 
-            create() {
+            initialize() {
                 this.add.sprite(0, 0, "background");
 
-                var menu = <button onClick={ e => {
-                    $("#main-menu-screen").hide();
-
-                    this.game.state.start("Map", true, false);
-                } }>Start Game</button>;
+                var menu = <button onClick={ e => this.advanceToNextState() }>Start Game</button>;
                 var target = document.getElementById("main-menu-screen");
 
                 React.render(menu, target);
                 $("#main-menu-screen").show();
             }
 
+            advanceToNextState() {
+                $("#main-menu-screen").hide();
+
+                this.game.state.start("Map", true, false);
+            }
+
+            keyDown(event: KeyboardEvent) {
+                this.advanceToNextState();
+            }
         }
     }
 }
