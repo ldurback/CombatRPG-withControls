@@ -15,7 +15,6 @@ namespace CombatRPG {
 
             private setupInput() {
                 this.game.input.keyboard.addCallbacks(this, this.advanceToNextState);
-                $("#virtual-gamepad-button-action").on("click", () => this.advanceToNextState());
             }
 
             addGamepadButtonsStateSpecific() {
@@ -24,7 +23,6 @@ namespace CombatRPG {
 
             private tearDownInput() {
                 this.game.input.keyboard.onDownCallback = null;
-                $("#virtual-gamepad-button-action").off("click");
             }
 
             removeGamepadButtonsStateSpecific() {

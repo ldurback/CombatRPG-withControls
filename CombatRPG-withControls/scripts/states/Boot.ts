@@ -5,6 +5,10 @@ namespace CombatRPG {
         export class Boot extends Phaser.State {
             preload() {
                 this.load.image('preloadBar', 'assets/images/loader.png');
+                this.load.image('arrow-right', 'assets/images/arrow-right.png');
+                this.load.image('arrow-up', 'assets/images/arrow-up.png');
+                this.load.image('square', 'assets/images/square.png');
+
                 this.game.state.add('SplashScreen', SplashScreen);
             }
 
@@ -18,11 +22,16 @@ namespace CombatRPG {
 
                 if (this.game.device.desktop) {
                     //  If you have any desktop specific settings, they can go in here
-                    this.scale.pageAlignHorizontally = true;
                 }
                 else {
                     //  Same goes for mobile settings.
                 }
+
+                this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                this.scale.pageAlignHorizontally = true;
+                this.scale.pageAlignVertically = true;
+                this.scale.forceOrientation(true, true);
+                this.scale.refresh();
 
                 this.game.state.start('SplashScreen', true, false);
             }

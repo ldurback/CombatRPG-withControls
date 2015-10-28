@@ -30,7 +30,9 @@
     <Content Include="assets\images\girl.png" />
     <Content Include="assets\images\loader.png" />
     <Content Include="assets\images\platform.png" />
+    <Content Include="assets\images\right-arrow.png" />
     <Content Include="assets\images\slime.png" />
+    <Content Include="assets\images\square.png" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
     <Content Include="bower_components\jquery\dist\jquery.min.js" />
     <Content Include="bower_components\jquery\MIT-LICENSE.txt" />

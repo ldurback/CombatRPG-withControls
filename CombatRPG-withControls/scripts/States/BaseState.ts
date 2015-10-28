@@ -5,8 +5,17 @@
             cursors: Phaser.CursorKeys;
             gamepad1: Phaser.SinglePad;
 
+            virtualGamepad: {
+                right: Phaser.Button,
+                left: Phaser.Button,
+                up: Phaser.Button,
+                down: Phaser.Button,
+                action: Phaser.Button
+            }
+
             preload() {
                 this.preloadBar = this.add.sprite(200, 250, 'preloadBar');
+
                 this.load.setPreloadSprite(this.preloadBar);
 
                 this.loadAssets();
@@ -16,6 +25,8 @@
                 this.preloadBar.kill();
 
                 this.initialize();
+
+                this.createVirtualGamepad();
 
                 this.setupUIInput();
             }
@@ -30,6 +41,33 @@
             initialize() { }
             destroy() { }
 
+            private createVirtualGamepad() {
+                this.virtualGamepad = {
+                    action: null,
+                    up: null,
+                    left: null,
+                    right: null,
+                    down: null
+                };
+
+                this.virtualGamepad.right = this.game.add.button(80, 600 - 48, 'arrow-right', null, this);
+                this.virtualGamepad.right.anchor.set(0.5, 0.5);
+
+                this.virtualGamepad.left = this.game.add.button(16, 600 - 48, 'arrow-right', null, this);
+                this.virtualGamepad.left.anchor.set(0.5, 0.5);
+                this.virtualGamepad.left.scale.x = -1;
+
+                this.virtualGamepad.up = this.game.add.button(48, 600 - 80, 'arrow-up', null, this);
+                this.virtualGamepad.up.anchor.set(0.5, 0.5);
+
+                this.virtualGamepad.down = this.game.add.button(48, 600 - 16, 'arrow-up', null, this);
+                this.virtualGamepad.down.anchor.set(0.5, 0.5);
+                this.virtualGamepad.down.scale.y = -1;
+
+                this.virtualGamepad.action = this.game.add.button(800 - 16, 600 - 16, 'square', null, this);
+                this.virtualGamepad.action.anchor.set(0.5, 0.5);
+            }
+
             private setupUIInput() {
                 this.cursors = this.game.input.keyboard.createCursorKeys();
                 this.game.input.gamepad.start();
@@ -42,16 +80,16 @@
                 this.gamepad1.addCallbacks(this, { onConnect: () => this.addGamepadButtons() });
 
                 this.cursors.up.onDown.add(this.moveSelectedElementUp, this);
-                $("#virtual-gamepad-up").on("click", this.moveSelectedElementUp);
+                this.virtualGamepad.up.onInputDown.add(this.moveSelectedElementUp, this);
                 this.cursors.down.onDown.add(this.moveSelectedElementDown, this);
-                $("#virtual-gamepad-down").on("click", this.moveSelectedElementDown);
+                this.virtualGamepad.down.onInputDown.add(this.moveSelectedElementDown, this);
 
                 var spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
                 var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
                 spacebar.onDown.add(this.clickSelected, this);
                 enter.onDown.add(this.clickSelected, this);
-                $("#virtual-gamepad-button-action").on("click", this.clickSelected);
+                this.virtualGamepad.action.onInputDown.add(this.clickSelected, this);
             }
 
             private tearDownUIInput() {
@@ -59,10 +97,6 @@
                 this.cursors.down.onDown.removeAll(this);
                 this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.removeAll(this);
                 this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.removeAll(this);
-
-                $("#virtual-gamepad-up").off("click", this.moveSelectedElementUp);
-                $("#virtual-gamepad-down").off("click", this.moveSelectedElementDown);
-                $("#virtual-gamepad-button-action").off("click", this.clickSelected);
 
                 if (this.gamepad1.connected)
                     this.removeGamepadButtons();
