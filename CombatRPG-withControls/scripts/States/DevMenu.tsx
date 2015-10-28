@@ -31,8 +31,11 @@ namespace CombatRPG {
             }
 
             private goToMainMenu() {
-                this.exitScreen();
                 this.game.state.start("MainMenu", true, false);
+            }
+
+            destroy() {
+                this.exitScreen();
             }
         }
     }

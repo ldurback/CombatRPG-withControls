@@ -40,15 +40,15 @@ namespace CombatRPG {
             }
 
             private startGame() {
-                this.exitScreen();
-
                 this.game.state.start("EmptyMap", true, false);
             }
 
             private startDevMenu() {
-                this.exitScreen();
-
                 this.game.state.start("DevMenu", true, false);
+            }
+
+            destroy() {
+                this.exitScreen();
             }
         }
     }

@@ -2,6 +2,7 @@
     export namespace States {
         export abstract class BaseState extends Phaser.State {
             preloadBar: Phaser.Sprite;
+            cursors: Phaser.CursorKeys;
 
             preload() {
                 this.preloadBar = this.add.sprite(200, 250, 'preloadBar');
@@ -10,8 +11,6 @@
                 this.loadAssets();
             }
 
-            abstract loadAssets();
-
             create() {
                 this.preloadBar.kill();
 
@@ -19,20 +18,35 @@
 
                 this.initialize();
             }
-            
-            abstract initialize();
+
+            shutdown() {
+                this.tearDownUIInput();
+
+                this.destroy();
+            }
+
+            loadAssets() { }
+            initialize() { }
+            destroy() { }
 
             private setupUIInput() {
-                var cursors = this.game.input.keyboard.createCursorKeys();
+                this.cursors = this.game.input.keyboard.createCursorKeys();
 
-                cursors.up.onDown.add(this.moveSelectedElementUp, this);
-                cursors.down.onDown.add(this.moveSelectedElementDown, this);
+                this.cursors.up.onDown.add(this.moveSelectedElementUp, this);
+                this.cursors.down.onDown.add(this.moveSelectedElementDown, this);
 
                 var spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
                 var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
                 spacebar.onDown.add(this.clickSelected, this);
                 enter.onDown.add(this.clickSelected, this);
+            }
+
+            private tearDownUIInput() {
+                this.cursors.up.onDown.removeAll(this);
+                this.cursors.down.onDown.removeAll(this);
+                this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.removeAll(this);
+                this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.removeAll(this);
             }
 
             private moveSelectedElementUp() {

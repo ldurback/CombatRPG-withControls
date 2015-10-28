@@ -35,18 +35,20 @@ namespace CombatRPG {
 
                 React.render(clear, target);
                 $("#splash-screen").hide();
-
-                this.game.input.keyboard.onDownCallback = null;
             }
 
             private advanceToNextState() {
-                this.exitScreen();
-
                 this.game.state.start("MainMenu", true, false);
             }
 
             private onKeyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
+            }
+
+            destroy() {
+                this.exitScreen();
+
+                this.game.input.keyboard.onDownCallback = null;
             }
         }
     }

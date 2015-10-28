@@ -1,4 +1,5 @@
 ﻿///<reference path="BaseState.ts" />
+///<reference path="MainMenu.tsx" />
 
 namespace CombatRPG {
     export namespace States {
@@ -31,18 +32,20 @@ namespace CombatRPG {
                 var target = document.getElementById("game-over-screen");
 
                 React.render(clear, target);
-                $("#game-over-screen").hide();
-
-                this.game.input.keyboard.onDownCallback = null;
+                $("#game-over-screen").hide(); 
             }
 
             private advanceToNextState() {
-                this.exitScreen();
-                this.game.state.start("EmptyMap", true, false);
+                this.game.state.start("MainMenu", true, false);
             }
 
             private onKeyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
+            }
+
+            destroy() {
+                this.exitScreen();
+                this.game.input.keyboard.onDownCallback = null;
             }
         }
     }
