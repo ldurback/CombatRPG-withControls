@@ -7,10 +7,12 @@ namespace CombatRPG {
                 player: Entities.Map.Player;
                 game: Phaser.Game;
                 cursors: Phaser.CursorKeys;
+                virtualGamepad: VirtualGamepad;
 
-                constructor(game: Phaser.Game, player: Entities.Map.Player) {
+                constructor(game: Phaser.Game, player: Entities.Map.Player, virtualGamepad?: VirtualGamepad) {
                     this.player = player;
                     this.game = game;
+                    this.virtualGamepad = virtualGamepad;
 
                     this.cursors = this.game.input.keyboard.createCursorKeys();
 
@@ -25,6 +27,20 @@ namespace CombatRPG {
 
                     this.cursors.down.onDown.add(() => this.player.setToMoveDown());
                     this.cursors.down.onUp.add(() => this.player.stopMovingDown());
+
+                    if (this.virtualGamepad) {
+                        virtualGamepad.left.onInputDown.add(() => this.player.setToMoveLeft());
+                        virtualGamepad.left.onInputUp.add(() => this.player.stopMovingLeft());
+
+                        virtualGamepad.up.onInputDown.add(() => this.player.setToMoveUp());
+                        virtualGamepad.up.onInputUp.add(() => this.player.stopMovingUp());
+
+                        virtualGamepad.right.onInputDown.add(() => this.player.setToMoveRight());
+                        virtualGamepad.right.onInputUp.add(() => this.player.stopMovingRight());
+
+                        virtualGamepad.down.onInputDown.add(() => this.player.setToMoveDown());
+                        virtualGamepad.down.onInputUp.add(() => this.player.stopMovingDown());
+                    }
                 }
 
                 addGamepadButtons(gamepad: Phaser.SinglePad) {
@@ -64,6 +80,20 @@ namespace CombatRPG {
 
                     this.cursors.right.onDown.removeAll(this);
                     this.cursors.right.onUp.removeAll(this);
+
+                    if (this.virtualGamepad) {
+                        this.virtualGamepad.down.onInputDown.removeAll();
+                        this.virtualGamepad.down.onInputUp.removeAll();
+
+                        this.virtualGamepad.up.onInputDown.removeAll();
+                        this.virtualGamepad.up.onInputUp.removeAll();
+
+                        this.virtualGamepad.left.onInputDown.removeAll();
+                        this.virtualGamepad.left.onInputUp.removeAll();
+
+                        this.virtualGamepad.right.onInputDown.removeAll();
+                        this.virtualGamepad.right.onInputUp.removeAll();
+                    }
                 }
             }
         }

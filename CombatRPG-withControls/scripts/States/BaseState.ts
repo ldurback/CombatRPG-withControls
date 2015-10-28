@@ -1,17 +1,13 @@
-﻿namespace CombatRPG {
+﻿///<reference path="../VirtualGamepad.ts" />
+
+namespace CombatRPG {
     export namespace States {
         export abstract class BaseState extends Phaser.State {
             preloadBar: Phaser.Sprite;
             cursors: Phaser.CursorKeys;
             gamepad1: Phaser.SinglePad;
 
-            virtualGamepad: {
-                right: Phaser.Button,
-                left: Phaser.Button,
-                up: Phaser.Button,
-                down: Phaser.Button,
-                action: Phaser.Button
-            }
+            virtualGamepad: VirtualGamepad;
 
             preload() {
                 this.preloadBar = this.add.sprite(200, 250, 'preloadBar');
@@ -26,8 +22,6 @@
 
                 this.initialize();
 
-                this.createVirtualGamepad();
-
                 this.setupUIInput();
             }
 
@@ -41,7 +35,7 @@
             initialize() { }
             destroy() { }
 
-            private createVirtualGamepad() {
+            createVirtualGamepad() {
                 this.virtualGamepad = {
                     action: null,
                     up: null,
@@ -80,16 +74,13 @@
                 this.gamepad1.addCallbacks(this, { onConnect: () => this.addGamepadButtons() });
 
                 this.cursors.up.onDown.add(this.moveSelectedElementUp, this);
-                this.virtualGamepad.up.onInputDown.add(this.moveSelectedElementUp, this);
                 this.cursors.down.onDown.add(this.moveSelectedElementDown, this);
-                this.virtualGamepad.down.onInputDown.add(this.moveSelectedElementDown, this);
 
                 var spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
                 var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
                 spacebar.onDown.add(this.clickSelected, this);
                 enter.onDown.add(this.clickSelected, this);
-                this.virtualGamepad.action.onInputDown.add(this.clickSelected, this);
             }
 
             private tearDownUIInput() {
