@@ -6,7 +6,7 @@
             }
 
             create() {
-                var splashScreenText = <div onClick={ e => alert("AHHHHHHHHH!") }><h1>Combat RPG</h1></div>;
+                var splashScreenText = <div><h1>Combat RPG</h1></div>;
 
                 var target = document.getElementById("splash-screen");
 
