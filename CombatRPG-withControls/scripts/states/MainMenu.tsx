@@ -2,19 +2,25 @@
 ///<reference path="Maps/EmptyMap.ts" />
 
 ///<reference path="BaseState.ts" />
+///<reference path="Maps/EmptyMap.ts" />
 
 namespace CombatRPG {
     export namespace States {
         export class MainMenu extends BaseState {
-            preload() {
+            loadAssets() {
                 this.load.image('background', 'assets/images/background.png');
 
-                this.game.state.add("Map", States.Maps.EmptyMap);
+                this.game.state.add("EmptyMap", States.Maps.EmptyMap);
             }
 
             initialize() {
                 this.add.sprite(0, 0, "background");
 
+                this.renderScreen();
+                this.setupInput();
+            }
+
+            renderScreen() {
                 var menu = <button onClick={ e => this.advanceToNextState() }>Start Game</button>;
                 var target = document.getElementById("main-menu-screen");
 
@@ -22,17 +28,17 @@ namespace CombatRPG {
                 $("#main-menu-screen").show();
             }
 
+            setupInput() {
+                this.game.input.keyboard.addCallbacks(this, null, null, this.onKeyPress);
+            }
+
             advanceToNextState() {
                 $("#main-menu-screen").hide();
 
-                this.game.state.start("Map", true, false);
+                this.game.state.start("EmptyMap", true, false);
             }
 
-            keyDown(event: KeyboardEvent) {
-                this.advanceToNextState();
-            }
-
-            keyUp(event: KeyboardEvent) {
+            onKeyPress(event: KeyboardEvent) {
                 this.advanceToNextState();
             }
         }

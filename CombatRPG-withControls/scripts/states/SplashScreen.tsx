@@ -1,13 +1,23 @@
 ﻿///<reference path="BaseState.ts" />
+///<reference path="MainMenu.tsx" />
 
 namespace CombatRPG {
     export namespace States {
         export class SplashScreen extends BaseState {
-            preload() {
+            loadAssets() {
                 this.game.state.add("MainMenu", States.MainMenu);
             }
 
             initialize() {
+                this.renderScreen();
+                this.setupInput();
+            }
+
+            setupInput() {
+                this.game.input.keyboard.addCallbacks(this, null, null, this.onKeyPress);
+            }
+
+            renderScreen() {
                 var splashScreenText = <div><h1>Combat RPG</h1></div>;
 
                 var target = document.getElementById("splash-screen");
@@ -25,11 +35,7 @@ namespace CombatRPG {
                 this.game.state.start("MainMenu", true, false);
             }
 
-            keyDown(event: KeyboardEvent) {
-                this.advanceToNextState();
-            }
-
-            keyUp(event: KeyboardEvent) {
+            onKeyPress(event: KeyboardEvent) {
                 this.advanceToNextState();
             }
         }

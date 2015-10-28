@@ -7,33 +7,61 @@ namespace CombatRPG {
             export class EmptyMap extends BaseState {
                 player: Entities.Map.Player;
 
-                preload() {
+                loadAssets() {
                     this.load.spritesheet("character", "/assets/images/character.png", 64, 64);
                 }
                 initialize() {
                     this.player = new Entities.Map.Player(this.game, 50, 50);
+
+                    this.setupInput();
                 }
 
-                keyDown(event: KeyboardEvent) {
-                    if (event.keyCode == 37) // left key
-                        this.player.setToMoveLeft();
-                    if (event.keyCode == 38) // up key
-                        this.player.setToMoveUp();
-                    if (event.keyCode == 39) // right key
-                        this.player.setToMoveRight();
-                    if (event.keyCode == 40) // down key
-                        this.player.setToMoveDown();
+                setupInput() {
+                    var cursors = this.game.input.keyboard.createCursorKeys();
+
+                    cursors.left.onDown.add(this.onKeyLeftPress, this);
+                    cursors.left.onUp.add(this.onKeyLeftLift, this);
+
+                    cursors.up.onDown.add(this.onKeyUpPress, this);
+                    cursors.up.onUp.add(this.onKeyUpLift, this);
+
+                    cursors.right.onDown.add(this.onKeyRightPress, this);
+                    cursors.right.onUp.add(this.onKeyRightLift, this);
+
+                    cursors.down.onDown.add(this.onKeyDownPress, this);
+                    cursors.down.onUp.add(this.onKeyDownLift, this);
                 }
 
-                keyUp(event: KeyboardEvent) {
-                    if (event.keyCode == 37) // left key
-                        this.player.stopMovingLeft();
-                    if (event.keyCode == 38) // up key
-                        this.player.stopMovingUp();
-                    if (event.keyCode == 39) // right key
-                        this.player.stopMovingRight();
-                    if (event.keyCode == 40) // down key
-                        this.player.stopMovingDown();
+                onKeyLeftLift() {
+                    this.player.stopMovingLeft();
+                }
+
+                onKeyUpLift() {
+                    this.player.stopMovingUp();
+                }
+
+                onKeyRightLift() {
+                    this.player.stopMovingRight();
+                }
+
+                onKeyDownLift() {
+                    this.player.stopMovingDown();
+                }
+
+                onKeyLeftPress() {
+                    this.player.setToMoveLeft();
+                }
+
+                onKeyUpPress() {
+                    this.player.setToMoveUp();
+                }
+
+                onKeyRightPress() {
+                    this.player.setToMoveRight();
+                }
+
+                onKeyDownPress() {
+                    this.player.setToMoveDown();
                 }
             }
         }

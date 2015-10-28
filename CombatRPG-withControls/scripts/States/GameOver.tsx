@@ -3,8 +3,18 @@
 namespace CombatRPG {
     export namespace States {
         export class GameOverScreen extends BaseState {
-              initialize() {
+            loadAssets() { }
 
+            initialize() {
+                this.renderScreen();
+                this.setupInput();                
+            }
+
+            setupInput() {
+                this.game.input.keyboard.addCallbacks(this, null, null, this.onKeyPress);
+            }
+
+            renderScreen() {
                 var gameOverText = <div><h1>Game Over, Click to start again!</h1></div>;
 
                 var target = document.getElementById("game-over-screen");
@@ -13,24 +23,16 @@ namespace CombatRPG {
 
                 $("#game-over-screen").show();
 
-                $("#game-over-screen").on("click", () => {
-                    $("#game-over-screen").hide();
-
-                    this.game.state.start("MainMenu", true, false);
-                });
+                $("#game-over-screen").on("click", () => { this.advanceToNextState() });
             }
 
-              advanceToNextState() {
+            advanceToNextState() {
                   $("#main-menu-screen").hide();
 
-                  this.game.state.start("Map", true, false);
-              }
-
-            keyDown(event: KeyboardEvent) {
-                this.advanceToNextState();
+                  this.game.state.start("EmptyMap", true, false);
             }
 
-            keyUp(event: KeyboardEvent) {
+            onKeyPress(event: KeyboardEvent) {
                 this.advanceToNextState();
             }
         }
