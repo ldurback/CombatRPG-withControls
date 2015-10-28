@@ -11,7 +11,7 @@
                 this.input.maxPointers = 1;
  
                 //  Phaser will automatically pause if the browser tab the game is in loses focus. You can disable that here:
-                this.stage.disableVisibilityChange = true;
+                this.stage.disableVisibilityChange = false;
 
                 if (this.game.device.desktop) {
                     //  If you have any desktop specific settings, they can go in here

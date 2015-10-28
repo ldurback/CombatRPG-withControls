@@ -125,8 +125,8 @@
     <Content Include="bower_components\react\react.min.js" />
     <Content Include="scripts\lib\phaser.js" />
     <Content Include="scripts\lib\phaser.min.js" />
-    <Content Include="styles\app.css" />
     <Content Include="index.html" />
+    <Content Include="styles\app.css" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +136,7 @@
     <TypeScriptCompile Include="scripts\lib\p2.d.ts" />
     <TypeScriptCompile Include="scripts\lib\phaser.d.ts" />
     <TypeScriptCompile Include="scripts\lib\pixi.d.ts" />
+    <TypeScriptCompile Include="scripts\states\SplashScreen.tsx" />
     <TypeScriptCompile Include="scripts\typings\es6-collections\es6-collections.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\typings\reactChildren.d.ts" />
