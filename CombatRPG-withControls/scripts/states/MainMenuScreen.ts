@@ -1,6 +1,6 @@
 ﻿namespace CombatRPG
 {
-    export namespace Screen
+    export namespace States
     {
         export class MainMenu extends Phaser.State
         {
