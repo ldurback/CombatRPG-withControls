@@ -96,6 +96,8 @@ namespace CombatRPG {
             }
 
             addGamepadButtons() {
+                this.game.highlightMenu = true;
+
                 this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP).onDown.add(() => this.moveSelectedElementUp(), this);
                 this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN).onDown.add(() => this.moveSelectedElementDown(), this);
                 this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => this.clickSelected(), this);
