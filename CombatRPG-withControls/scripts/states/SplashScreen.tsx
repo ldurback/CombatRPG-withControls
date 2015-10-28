@@ -26,7 +26,7 @@ namespace CombatRPG {
 
                 $("#splash-screen").show();
 
-                $("#splash-screen").on("click", this.advanceToNextState);
+                $("#splash-screen").on("click", () => { this.advanceToNextState() });
             }
 
             advanceToNextState() {

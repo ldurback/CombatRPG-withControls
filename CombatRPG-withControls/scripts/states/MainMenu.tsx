@@ -3,6 +3,7 @@
 
 ///<reference path="BaseState.ts" />
 ///<reference path="Maps/EmptyMap.ts" />
+///<reference path="DevMenu.tsx" />
 
 namespace CombatRPG {
     export namespace States {
@@ -11,6 +12,7 @@ namespace CombatRPG {
                 this.load.image('background', 'assets/images/background.png');
 
                 this.game.state.add("EmptyMap", States.Maps.EmptyMap);
+                this.game.state.add("DevMenu", States.DevMenu);
             }
 
             initialize() {
@@ -21,7 +23,9 @@ namespace CombatRPG {
             }
 
             renderScreen() {
-                var menu = <button onClick={ e => this.advanceToNextState() }>Start Game</button>;
+                var menu = <div><button onClick={ e => this.startGame() }>Start Game</button>
+                    <button onClick={ e => this.startDevMenu() }>Dev Menu</button>
+                </div>;
                 var target = document.getElementById("main-menu-screen");
 
                 React.render(menu, target);
@@ -29,17 +33,18 @@ namespace CombatRPG {
             }
 
             setupInput() {
-                this.game.input.keyboard.addCallbacks(this, null, null, this.onKeyPress);
             }
 
-            advanceToNextState() {
+            startGame() {
                 $("#main-menu-screen").hide();
 
                 this.game.state.start("EmptyMap", true, false);
             }
 
-            onKeyPress(event: KeyboardEvent) {
-                this.advanceToNextState();
+            startDevMenu() {
+                $("#main-menu-screen").hide();
+
+                this.game.state.start("DevMenu", true, false);
             }
         }
     }
