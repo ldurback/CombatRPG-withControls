@@ -143,6 +143,7 @@
     <TypeScriptCompile Include="scripts\lib\phaser.d.ts" />
     <TypeScriptCompile Include="scripts\lib\pixi.d.ts" />
     <TypeScriptCompile Include="scripts\States\Maps\EmptyMap.ts" />
+    <TypeScriptCompile Include="scripts\States\Maps\PlayerInput.ts" />
     <TypeScriptCompile Include="scripts\States\SplashScreen.tsx" />
     <TypeScriptCompile Include="scripts\typings\es6-collections\es6-collections.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
