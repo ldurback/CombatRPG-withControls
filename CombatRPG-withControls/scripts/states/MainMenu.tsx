@@ -4,6 +4,8 @@
             preload() {
                 this.load.image('background', 'assets/images/background.png');
                 this.load.image("loader", "assets/images/loader.png");
+
+                this.game.state.add("Map", States.Map);
             }
 
             create() {
@@ -11,7 +13,7 @@
                 var menuButton = <button onClick={ e => {
                     $("#main-menu-screen").hide();
 
-                    this.game.state.start("SplashScreen", true, false);
+                    this.game.state.start("Map", true, false);
                 } }>Start Game</button>;
                 var target = document.getElementById("main-menu-screen");
 
