@@ -3,12 +3,11 @@
         export abstract class BaseState extends Phaser.State {
             preloadBar: Phaser.Sprite;
             cursors: Phaser.CursorKeys;
+            gamepad1: Phaser.SinglePad;
 
             preload() {
                 this.preloadBar = this.add.sprite(200, 250, 'preloadBar');
                 this.load.setPreloadSprite(this.preloadBar);
-
-                this.setupUIInput();
 
                 this.loadAssets();
             }
@@ -17,6 +16,8 @@
                 this.preloadBar.kill();
 
                 this.initialize();
+
+                this.setupUIInput();
             }
 
             shutdown() {
@@ -31,6 +32,14 @@
 
             private setupUIInput() {
                 this.cursors = this.game.input.keyboard.createCursorKeys();
+                this.game.input.gamepad.start();
+
+                this.gamepad1 = this.game.input.gamepad.pad1;
+
+                if (this.gamepad1.connected)
+                    this.addGamepadButtons();
+
+                this.gamepad1.addCallbacks(this, { onConnect: () => this.addGamepadButtons() });
 
                 this.cursors.up.onDown.add(this.moveSelectedElementUp, this);
                 $("#virtual-gamepad-up").on("click", this.moveSelectedElementUp);
@@ -54,7 +63,32 @@
                 $("#virtual-gamepad-up").off("click", this.moveSelectedElementUp);
                 $("#virtual-gamepad-down").off("click", this.moveSelectedElementDown);
                 $("#virtual-gamepad-button-action").off("click", this.clickSelected);
+
+                if (this.gamepad1.connected)
+                    this.removeGamepadButtons();
+
+                this.gamepad1.onConnectCallback = null;
             }
+
+            addGamepadButtons() {
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP).onDown.add(() => this.moveSelectedElementUp(), this);
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN).onDown.add(() => this.moveSelectedElementDown(), this);
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => this.clickSelected(), this);
+
+                this.addGamepadButtonsStateSpecific(this.gamepad1);
+            }
+
+            addGamepadButtonsStateSpecific(gamepad: Phaser.SinglePad) { }
+
+            removeGamepadButtons() {
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP).onDown.removeAll();
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN).onDown.removeAll();
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.removeAll();
+
+                this.removeGamepadButtonsStateSpecific(this.gamepad1);
+            }
+
+            removeGamepadButtonsStateSpecific(gamepad: Phaser.SinglePad) { }
 
             private moveSelectedElementUp() {
                 var currentSelected = $(".selected");

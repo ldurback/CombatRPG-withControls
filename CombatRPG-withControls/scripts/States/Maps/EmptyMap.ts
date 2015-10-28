@@ -10,10 +10,20 @@ namespace CombatRPG {
 
                 loadAssets() {
                     this.load.spritesheet("character", "/assets/images/character.png", 64, 64);
+
+                    
                 }
                 initialize() {
                     this.player = new Entities.Map.Player(this.game, 50, 50);
                     this.playerInput = new PlayerInput(this.game, this.player);
+                }
+
+                addGamepadButtonsStateSpecific(gamepad: Phaser.SinglePad) {
+                    this.playerInput.addGamepadButtons(gamepad);
+                }
+
+                removeGamepadButtonsStateSpecific(gamepad: Phaser.SinglePad) {
+                    this.playerInput.removeGamepadButtons(gamepad);
                 }
 
                 destroy() {

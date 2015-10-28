@@ -18,9 +18,17 @@ namespace CombatRPG {
                 $("#virtual-gamepad-button-action").on("click", () => this.advanceToNextState());
             }
 
+            addGamepadButtonsStateSpecific() {
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => this.advanceToNextState());
+            }
+
             private tearDownInput() {
                 this.game.input.keyboard.onDownCallback = null;
                 $("#virtual-gamepad-button-action").off("click");
+            }
+
+            removeGamepadButtonsStateSpecific() {
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.removeAll();
             }
 
             private renderScreen() {
