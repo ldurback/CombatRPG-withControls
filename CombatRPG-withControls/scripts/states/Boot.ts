@@ -21,7 +21,7 @@
                     //  Same goes for mobile settings.
                 }
 
-                //this.game.state.add('SplashScreen', SplashScreen, false);
+                this.game.state.add('SplashScreen', SplashScreen);
 
                 this.game.state.start('SplashScreen', true, false);
             }
