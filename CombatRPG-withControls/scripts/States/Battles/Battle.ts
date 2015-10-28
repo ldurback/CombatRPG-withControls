@@ -1,10 +1,13 @@
 ﻿namespace CombatRPG {
     export namespace States {
         export namespace Battles {
-            export abstract class Battle extends Phaser.State {
-                preload() {
+            export abstract class Battle extends BaseState {
+                loadAssets() {
                     this.game.state.add("GameOver", States.GameOverScreen);
 
+                }
+
+                initialize() {
                 }
             }
         }
