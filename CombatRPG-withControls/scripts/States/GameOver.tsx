@@ -17,6 +17,9 @@
                     this.game.state.start("MainMenu", true, false);
                 });
             }
+
+            advanceToMainMenu() {
+            }
         }
     }
 }
