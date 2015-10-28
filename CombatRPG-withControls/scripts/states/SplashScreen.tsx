@@ -13,11 +13,11 @@ namespace CombatRPG {
                 this.setupInput();
             }
 
-            setupInput() {
+            private setupInput() {
                 this.game.input.keyboard.addCallbacks(this, this.onKeyDown);
             }
 
-            renderScreen() {
+            private renderScreen() {
                 var splashScreenText = <div><h1>Combat RPG</h1></div>;
 
                 var target = document.getElementById("splash-screen");
@@ -29,7 +29,7 @@ namespace CombatRPG {
                 $("#splash-screen").on("click", () => { this.advanceToNextState() });
             }
 
-            exitScreen() {
+            private exitScreen() {
                 var clear = <div></div>;
                 var target = document.getElementById("splash-screen");
 
@@ -39,13 +39,13 @@ namespace CombatRPG {
                 this.game.input.keyboard.onDownCallback = null;
             }
 
-            advanceToNextState() {
+            private advanceToNextState() {
                 this.exitScreen();
 
                 this.game.state.start("MainMenu", true, false);
             }
 
-            onKeyDown(event: KeyboardEvent) {
+            private onKeyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
             }
         }

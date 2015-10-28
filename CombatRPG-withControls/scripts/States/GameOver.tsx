@@ -14,7 +14,7 @@ namespace CombatRPG {
                 this.game.input.keyboard.addCallbacks(this, this.onKeyDown);
             }
 
-            renderScreen() {
+            private renderScreen() {
                 var gameOverText = <div><h1>Game Over, Click to start again!</h1></div>;
 
                 var target = document.getElementById("game-over-screen");
@@ -26,7 +26,7 @@ namespace CombatRPG {
                 $("#game-over-screen").on("click", () => { this.advanceToNextState() });
             }
 
-            exitScreen() {
+            private exitScreen() {
                 var clear = <div></div>;
                 var target = document.getElementById("game-over-screen");
 
@@ -36,12 +36,12 @@ namespace CombatRPG {
                 this.game.input.keyboard.onDownCallback = null;
             }
 
-            advanceToNextState() {
+            private advanceToNextState() {
                 this.exitScreen();
                 this.game.state.start("EmptyMap", true, false);
             }
 
-            onKeyDown(event: KeyboardEvent) {
+            private onKeyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
             }
         }

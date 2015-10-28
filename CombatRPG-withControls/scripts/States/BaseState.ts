@@ -22,7 +22,7 @@
             
             abstract initialize();
 
-            setupUIInput() {
+            private setupUIInput() {
                 var cursors = this.game.input.keyboard.createCursorKeys();
 
                 cursors.up.onDown.add(this.moveSelectedElementUp, this);
@@ -35,7 +35,7 @@
                 enter.onDown.add(this.clickSelected, this);
             }
 
-            moveSelectedElementUp() {
+            private moveSelectedElementUp() {
                 var currentSelected = $(".selected");
                 var prev = $(".selected").prev(".selectable");
 
@@ -45,7 +45,7 @@
                 }
             }
 
-            moveSelectedElementDown() {
+            private moveSelectedElementDown() {
                 var currentSelected = $(".selected");
                 var next = $(".selected").next(".selectable");
 
@@ -55,7 +55,7 @@
                 }
             }
 
-            clickSelected() {
+            private clickSelected() {
                 $(".selected").click();
             }
         }

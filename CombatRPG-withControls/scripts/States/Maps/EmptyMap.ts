@@ -16,7 +16,7 @@ namespace CombatRPG {
                     this.setupInput();
                 }
 
-                setupInput() {
+                private setupInput() {
                     var cursors = this.game.input.keyboard.createCursorKeys();
 
                     cursors.left.onDown.add(this.onKeyLeftPress, this);
@@ -32,35 +32,35 @@ namespace CombatRPG {
                     cursors.down.onUp.add(this.onKeyDownLift, this);
                 }
 
-                onKeyLeftLift() {
+                private onKeyLeftLift() {
                     this.player.stopMovingLeft();
                 }
 
-                onKeyUpLift() {
+                private onKeyUpLift() {
                     this.player.stopMovingUp();
                 }
 
-                onKeyRightLift() {
+                private onKeyRightLift() {
                     this.player.stopMovingRight();
                 }
 
-                onKeyDownLift() {
+                private onKeyDownLift() {
                     this.player.stopMovingDown();
                 }
 
-                onKeyLeftPress() {
+                private onKeyLeftPress() {
                     this.player.setToMoveLeft();
                 }
 
-                onKeyUpPress() {
+                private onKeyUpPress() {
                     this.player.setToMoveUp();
                 }
 
-                onKeyRightPress() {
+                private onKeyRightPress() {
                     this.player.setToMoveRight();
                 }
 
-                onKeyDownPress() {
+                private onKeyDownPress() {
                     this.player.setToMoveDown();
                 }
             }
