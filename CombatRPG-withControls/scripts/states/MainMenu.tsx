@@ -8,17 +8,15 @@
 
             create() {
                 this.add.sprite(0, 0, "background");
-                var menuButton = <button type="button">Start Game</button>;
+                var menuButton = <button onClick={ e => {
+                    $("#main-menu-screen").hide();
+
+                    this.game.state.start("SplashScreen", true, false);
+                } }>Start Game</button>;
                 var target = document.getElementById("main-menu-screen");
 
                 React.render(menuButton, target);
                 $("#main-menu-screen").show();
-
-                $("#main-menu-screen").on("click", () => {
-                    $("#main-menu-screen").hide();
-
-                    this.game.state.start("SplashScreen", true, false);
-                });
             }
 
         }
