@@ -26,6 +26,10 @@
             keyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
             }
+
+            keyUp(event: KeyboardEvent) {
+                this.advanceToNextState();
+            }
         }
     }
 }
