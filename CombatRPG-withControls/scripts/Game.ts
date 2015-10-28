@@ -6,6 +6,7 @@ namespace CombatRPG {
             super(800, 600, Phaser.AUTO, 'content', null);
 
             this.state.add("Boot", States.Boot);
+           
 
             this.state.start("Boot");
         }
