@@ -22,6 +22,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\arrow-right.png" />
+    <Content Include="assets\images\arrow-up.png" />
     <Content Include="assets\images\background.png" />
     <Content Include="assets\images\bow-orc.png" />
     <Content Include="assets\images\bullet.png" />
@@ -30,7 +32,6 @@
     <Content Include="assets\images\girl.png" />
     <Content Include="assets\images\loader.png" />
     <Content Include="assets\images\platform.png" />
-    <Content Include="assets\images\right-arrow.png" />
     <Content Include="assets\images\slime.png" />
     <Content Include="assets\images\square.png" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
@@ -156,6 +157,7 @@
     <TypeScriptCompile Include="scripts\typings\react\react.d.ts" />
     <TypeScriptCompile Include="scripts\typings\tsd.d.ts" />
     <TypeScriptCompile Include="scripts\Utils\MapToArray.ts" />
+    <TypeScriptCompile Include="scripts\VirtualGamepad.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
