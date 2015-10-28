@@ -1,7 +1,7 @@
 ﻿namespace CombatRPG {
     export namespace States {
         export class GameOverScreen extends BaseState {
-            initialize() {
+              initialize() {
 
                 var gameOverText = <div><h1>Game Over, Click to start again!</h1></div>;
 
@@ -18,11 +18,11 @@
                 });
             }
 
-            advanceToNextState() {
-                $("#main-menu-screen").hide();
+              advanceToNextState() {
+                  $("#main-menu-screen").hide();
 
-                this.game.state.start("Map", true, false);
-            }
+                  this.game.state.start("Map", true, false);
+              }
 
             keyDown(event: KeyboardEvent) {
                 this.advanceToNextState();
