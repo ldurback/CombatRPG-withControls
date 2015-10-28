@@ -2,9 +2,14 @@
     export namespace Entities {
         export namespace Map {
             export class Player extends Phaser.Sprite {
-                cursors: Phaser.CursorKeys;
                 facing: string;
                 idle: boolean;
+
+                movingUp: boolean;
+                movingDown: boolean;
+                movingLeft: boolean;
+                movingRight: boolean;
+
                 constructor(game: Phaser.Game, x: number, y: number) {
                     super(game, x, y, 'character', 104);
 
@@ -24,14 +29,17 @@
 
                     game.add.existing(this);
 
-                    this.cursors = game.input.keyboard.createCursorKeys();
+                    this.movingUp = false;
+                    this.movingDown = false;
+                    this.movingLeft = false;
+                    this.movingRight = false;
                 }
 
                 update() {
                     this.body.velocity.x = 0;
                     this.body.velocity.y = 0;
 
-                    if (this.cursors.left.isDown) {
+                    if (this.movingLeft) {
                         this.body.velocity.x = -200;
 
                         if (this.facing !== 'left' || this.idle) {
@@ -40,7 +48,7 @@
                             this.idle = false;
                         }
                     }
-                    else if (this.cursors.right.isDown) {
+                    else if (this.movingRight) {
                         this.body.velocity.x = 200;
 
                         if (this.facing !== 'right' || this.idle) {
@@ -49,7 +57,7 @@
                             this.idle = false;
                         }
                     }
-                    else if (this.cursors.up.isDown) {
+                    else if (this.movingUp) {
                         this.body.velocity.y = -200;
 
                         if (this.facing !== 'up' || this.idle) {
@@ -58,7 +66,7 @@
                             this.idle = false;
                         }
                     }
-                    else if (this.cursors.down.isDown) {
+                    else if (this.movingDown) {
                         this.body.velocity.y = 200;
 
                         if (this.facing !== 'down' || this.idle) {
@@ -85,6 +93,34 @@
 
                         this.idle = true;
                     }
+                }
+
+                setToMoveUp() {
+                    this.movingUp = true;
+                }
+                stopMovingUp() {
+                    this.movingUp = false;
+                }
+
+                setToMoveDown() {
+                    this.movingDown = true;
+                }
+                stopMovingDown() {
+                    this.movingDown = false;
+                }
+
+                setToMoveLeft() {
+                    this.movingLeft = true;
+                }
+                stopMovingLeft() {
+                    this.movingLeft = false;
+                }
+
+                setToMoveRight() {
+                    this.movingRight = true;
+                }
+                stopMovingRight() {
+                    this.movingRight = true;
                 }
             }
         }
