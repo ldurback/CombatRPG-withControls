@@ -10,10 +10,11 @@
             abstract initialize();
 
             private setUpInput() {
-                this.game.input.keyboard.addCallbacks(this, this.keyDown);
+                this.game.input.keyboard.addCallbacks(this, this.keyDown, this.keyUp);
             }
 
             abstract keyDown(event: KeyboardEvent);
+            abstract keyUp(event: KeyboardEvent);
         }
     }
 }
