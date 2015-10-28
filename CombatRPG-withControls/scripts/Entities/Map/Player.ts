@@ -1,8 +1,12 @@
 ﻿namespace CombatRPG {
     export namespace Entities {
         export namespace Map {
+            enum Direction {
+                Up, Down, Left, Right
+            }
+
             export class Player extends Phaser.Sprite {
-                facing: string;
+                facing: Direction;
                 idle: boolean;
 
                 private movingUp: boolean;
@@ -42,52 +46,52 @@
                     if (this.movingLeft) {
                         this.body.velocity.x = -200;
 
-                        if (this.facing !== 'left' || this.idle) {
+                        if (this.facing != Direction.Left || this.idle) {
                             this.play('left');
-                            this.facing = 'left';
+                            this.facing = Direction.Left;
                             this.idle = false;
                         }
                     }
                     else if (this.movingRight) {
                         this.body.velocity.x = 200;
 
-                        if (this.facing !== 'right' || this.idle) {
+                        if (this.facing != Direction.Right || this.idle) {
                             this.play('right');
-                            this.facing = 'right';
+                            this.facing = Direction.Right;
                             this.idle = false;
                         }
                     }
                     else if (this.movingUp) {
                         this.body.velocity.y = -200;
 
-                        if (this.facing !== 'up' || this.idle) {
+                        if (this.facing != Direction.Up || this.idle) {
                             this.play('up');
-                            this.facing = 'up';
+                            this.facing = Direction.Up;
                             this.idle = false;
                         }
                     }
                     else if (this.movingDown) {
                         this.body.velocity.y = 200;
 
-                        if (this.facing !== 'down' || this.idle) {
+                        if (this.facing != Direction.Down || this.idle) {
                             this.play('down');
-                            this.facing = 'down';
+                            this.facing = Direction.Down;
                             this.idle = false;
                         }
                     }
                     else {
                         this.animations.stop();
 
-                        if (this.facing === 'left') {
+                        if (this.facing == Direction.Left) {
                             this.frame = 117;
                         }
-                        else if (this.facing === 'right') {
+                        else if (this.facing == Direction.Right) {
                             this.frame = 143;
                         }
-                        else if (this.facing === 'up') {
+                        else if (this.facing == Direction.Up) {
                             this.frame = 104;
                         }
-                        else if (this.facing === 'down') {
+                        else if (this.facing == Direction.Down) {
                             this.frame = 130;
                         }
 
