@@ -5,6 +5,7 @@ namespace CombatRPG {
         export class Boot extends Phaser.State {
             preload() {
                 this.load.image('preloadBar', 'assets/images/loader.png');
+                this.game.state.add('SplashScreen', SplashScreen);
             }
 
             create() {
@@ -22,8 +23,6 @@ namespace CombatRPG {
                 else {
                     //  Same goes for mobile settings.
                 }
-
-                this.game.state.add('SplashScreen', SplashScreen);
 
                 this.game.state.start('SplashScreen', true, false);
             }
