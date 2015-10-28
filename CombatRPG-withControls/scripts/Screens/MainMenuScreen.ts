@@ -1,10 +1,14 @@
 ﻿namespace CombatRPG
 {
-    export namespace MainMenuScreen
+    export namespace Screen
     {
-        export interface MainMenu
+        export class MainMenu extends Phaser.State
         {
-            showMainMenu();
+            loadMenu()
+            {
+
+            }
+
         }
     }
 }
