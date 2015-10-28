@@ -131,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="scripts\app.ts" />
-    <TypeScriptCompile Include="scripts\states\MainMenuScreen.ts" />
+    <TypeScriptCompile Include="scripts\states\MainMenu.ts" />
     <TypeScriptCompile Include="scripts\states\Boot.ts" />
     <TypeScriptCompile Include="scripts\Game.ts" />
     <TypeScriptCompile Include="scripts\lib\p2.d.ts" />
@@ -178,7 +178,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62604</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

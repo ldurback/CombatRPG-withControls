@@ -2,6 +2,8 @@
     export namespace States {
         export class SplashScreen extends Phaser.State {
             preload() {
+
+
             }
 
             create() {
@@ -12,6 +14,12 @@
                 React.render(splashScreenText, target);
 
                 $("#splash-screen").show();
+
+                $("#splash-screen").on("click", () => {
+                    $("#splash-screen").hide();
+
+
+                });
             }
         }
     }
