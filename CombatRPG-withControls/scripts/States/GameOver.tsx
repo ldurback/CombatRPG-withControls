@@ -12,7 +12,13 @@ namespace CombatRPG {
             }
 
             setupInput() {
-                this.game.input.keyboard.addCallbacks(this, this.onKeyDown);
+                this.game.input.keyboard.addCallbacks(this, () => this.advanceToNextState());
+                $("#virtual-gamepad-button-action").on("click", () => this.advanceToNextState());
+            }
+
+            tearDownInput() {
+                this.game.input.keyboard.onDownCallback = null;
+                $("#virtual-gamepad-button-action").off("click");
             }
 
             private renderScreen() {
@@ -39,13 +45,9 @@ namespace CombatRPG {
                 this.game.state.start("MainMenu", true, false);
             }
 
-            private onKeyDown(event: KeyboardEvent) {
-                this.advanceToNextState();
-            }
-
             destroy() {
                 this.exitScreen();
-                this.game.input.keyboard.onDownCallback = null;
+                this.tearDownInput();
             }
         }
     }

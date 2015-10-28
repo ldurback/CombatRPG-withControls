@@ -15,6 +15,10 @@ namespace CombatRPG {
                     this.player = new Entities.Map.Player(this.game, 50, 50);
                     this.playerInput = new PlayerInput(this.game, this.player);
                 }
+
+                destroy() {
+                    this.playerInput.destroy();
+                }
             }
         }
     }

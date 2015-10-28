@@ -8,13 +8,13 @@
                 this.preloadBar = this.add.sprite(200, 250, 'preloadBar');
                 this.load.setPreloadSprite(this.preloadBar);
 
+                this.setupUIInput();
+
                 this.loadAssets();
             }
 
             create() {
                 this.preloadBar.kill();
-
-                this.setupUIInput();
 
                 this.initialize();
             }
@@ -33,13 +33,16 @@
                 this.cursors = this.game.input.keyboard.createCursorKeys();
 
                 this.cursors.up.onDown.add(this.moveSelectedElementUp, this);
+                $("#virtual-gamepad-up").on("click", this.moveSelectedElementUp);
                 this.cursors.down.onDown.add(this.moveSelectedElementDown, this);
+                $("#virtual-gamepad-down").on("click", this.moveSelectedElementDown);
 
                 var spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
                 var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
                 spacebar.onDown.add(this.clickSelected, this);
                 enter.onDown.add(this.clickSelected, this);
+                $("#virtual-gamepad-button-action").on("click", this.clickSelected);
             }
 
             private tearDownUIInput() {
@@ -47,6 +50,10 @@
                 this.cursors.down.onDown.removeAll(this);
                 this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.removeAll(this);
                 this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.removeAll(this);
+
+                $("#virtual-gamepad-up").off("click", this.moveSelectedElementUp);
+                $("#virtual-gamepad-down").off("click", this.moveSelectedElementDown);
+                $("#virtual-gamepad-button-action").off("click", this.clickSelected);
             }
 
             private moveSelectedElementUp() {
