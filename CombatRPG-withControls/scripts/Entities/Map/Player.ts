@@ -9,10 +9,12 @@
                 facing: Direction;
                 idle: boolean;
 
-                private movingUp: boolean;
-                private movingDown: boolean;
-                private movingLeft: boolean;
-                private movingRight: boolean;
+                private moving: {
+                    up: boolean,
+                    down: boolean,
+                    left: boolean,
+                    right: boolean
+                }
 
                 constructor(game: Phaser.Game, x: number, y: number) {
                     super(game, x, y, 'character', 104);
@@ -33,17 +35,19 @@
 
                     game.add.existing(this);
 
-                    this.movingUp = false;
-                    this.movingDown = false;
-                    this.movingLeft = false;
-                    this.movingRight = false;
+                    this.moving = {
+                        up: false,
+                        down: false,
+                        left: false,
+                        right: false
+                    };
                 }
 
                 update() {
                     this.body.velocity.x = 0;
                     this.body.velocity.y = 0;
 
-                    if (this.movingLeft) {
+                    if (this.moving.left) {
                         this.body.velocity.x = -200;
 
                         if (this.facing != Direction.Left || this.idle) {
@@ -52,7 +56,7 @@
                             this.idle = false;
                         }
                     }
-                    else if (this.movingRight) {
+                    else if (this.moving.right) {
                         this.body.velocity.x = 200;
 
                         if (this.facing != Direction.Right || this.idle) {
@@ -61,7 +65,7 @@
                             this.idle = false;
                         }
                     }
-                    else if (this.movingUp) {
+                    else if (this.moving.up) {
                         this.body.velocity.y = -200;
 
                         if (this.facing != Direction.Up || this.idle) {
@@ -70,7 +74,7 @@
                             this.idle = false;
                         }
                     }
-                    else if (this.movingDown) {
+                    else if (this.moving.down) {
                         this.body.velocity.y = 200;
 
                         if (this.facing != Direction.Down || this.idle) {
@@ -100,31 +104,31 @@
                 }
 
                 setToMoveUp() {
-                    this.movingUp = true;
+                    this.moving.up = true;
                 }
                 stopMovingUp() {
-                    this.movingUp = false;
+                    this.moving.up = false;
                 }
 
                 setToMoveDown() {
-                    this.movingDown = true;
+                    this.moving.down = true;
                 }
                 stopMovingDown() {
-                    this.movingDown = false;
+                    this.moving.down = false;
                 }
 
                 setToMoveLeft() {
-                    this.movingLeft = true;
+                    this.moving.left = true;
                 }
                 stopMovingLeft() {
-                    this.movingLeft = false;
+                    this.moving.left = false;
                 }
 
                 setToMoveRight() {
-                    this.movingRight = true;
+                    this.moving.right = true;
                 }
                 stopMovingRight() {
-                    this.movingRight = false;
+                    this.moving.right = false;
                 }
             }
         }
