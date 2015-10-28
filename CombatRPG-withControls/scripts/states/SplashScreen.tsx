@@ -2,6 +2,7 @@
     export namespace States {
         export class SplashScreen extends Phaser.State {
             preload() {
+                this.game.state.add("MainMenu", States.MainMenu);
             }
 
             create() {
@@ -12,6 +13,12 @@
                 React.render(splashScreenText, target);
 
                 $("#splash-screen").show();
+
+                $("#splash-screen").on("click", () => {
+                    $("#splash-screen").hide();
+
+                    this.game.state.start("MainMenu", true, false);
+                });
             }
         }
     }

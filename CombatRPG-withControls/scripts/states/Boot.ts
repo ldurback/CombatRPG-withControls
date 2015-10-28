@@ -1,4 +1,6 @@
-﻿namespace CombatRPG {
+﻿///<reference path="SplashScreen.tsx" />
+
+namespace CombatRPG {
     export namespace States {
         export class Boot extends Phaser.State {
             preload() {
