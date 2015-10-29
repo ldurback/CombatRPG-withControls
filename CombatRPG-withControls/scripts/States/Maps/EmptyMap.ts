@@ -14,7 +14,8 @@ namespace CombatRPG {
                     
                 }
                 initialize() {
-                    this.createVirtualGamepad();
+                    if (this.game.showVirtualGamepad)
+                        this.createVirtualGamepad();
 
                     this.player = new Entities.Map.Player(this.game, 50, 50);
                     this.playerInput = new PlayerInput(this.game, this.player, this.virtualGamepad);

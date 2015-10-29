@@ -22,8 +22,8 @@ namespace CombatRPG {
             }
 
             private renderScreen() {
-                var menu = <div><div className={this.game.highlightMenu ? "selectable selected" : "selectable"} onClick={ e => this.startGame() }>Start Game</div>
-                    <div className="selectable" onClick={ e => this.startDevMenu() }>Dev Menu</div>
+                var menu = <div><div className={this.game.highlightMenu ? "selectable selected link" : "selectable link"} onClick={ e => this.startGame() }>Start Game</div>
+                    <div className="selectable link" onClick={ e => this.startDevMenu() }>Dev Menu</div>
                 </div>;
                 var target = document.getElementById("main-menu-screen");
 

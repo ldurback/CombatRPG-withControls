@@ -7,12 +7,20 @@
     user-select: none;
 }
 
+#game * {
+    cursor: default;
+}
+
+#game .link, #game .link * {
+    cursor: pointer;
+}
+
 #game {
 	position : absolute;
 	left : 0;
 	top : 0;
 
-	font-size : 20px;
+	font-size: x-large;
 	background-color: transparent;
     color: white;
 
@@ -65,4 +73,43 @@
 
 .selected {
     background-color: blue;
+}
+
+#dialogs {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    font-size: large;
+    background-color: blue;
+    color: white;
+
+    border: ridge;
+    border-color: white;
+    border-width: thick;
+
+    text-align: left;
+
+    padding: 0.5em 0.5em 0.5em 0.5em;
+
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
+	display : none;
+	z-index : 1;
+
+    width : 100%;
+    height : 40%
+}
+
+.menu-link {
+    border: ridge;
+    border-color: white;
+    border-width: medium;
+}
+
+.message {
+    width: 100%;
+    height: 100%;
 }

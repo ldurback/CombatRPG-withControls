@@ -3,6 +3,7 @@
 namespace Phaser {
     export interface Game {
         highlightMenu: boolean;
+        showVirtualGamepad: boolean;
     }
 }
 
@@ -12,8 +13,6 @@ namespace CombatRPG {
             super(800, 600, Phaser.AUTO, 'content', null);
 
             this.state.add("Boot", States.Boot);
-
-            this.highlightMenu = false;
 
             this.state.start("Boot");
         }

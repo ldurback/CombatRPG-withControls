@@ -24,6 +24,7 @@ namespace CombatRPG {
                     //  If you have any desktop specific settings, they can go in here
                 }
                 else {
+                    this.game.showVirtualGamepad = true;
                     //  Same goes for mobile settings.
                 }
 
