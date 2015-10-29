@@ -1,7 +1,18 @@
-﻿    export namespace Entities {
+﻿namespace CombatRPG {
+    export namespace Entities {
         export namespace Battle {
-            export abstract class Entity extends Phaser.Sprite {
-
+            export class Entity {
+                function testState()
+                {
+                    isAlive : boolean(false);
+                    isMoving : Boolean(false);
+                    
+                    if (isAlive != false)
+                    {
+                        isMoving = true;
+                    }
+                }
             }
         }
     }
+}

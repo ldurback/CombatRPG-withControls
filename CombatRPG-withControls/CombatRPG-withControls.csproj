@@ -136,6 +136,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="scripts\app.ts" />
     <TypeScriptCompile Include="scripts\Entities\Battle\Enemies\Slime.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Battle\Status.ts" />
     <TypeScriptCompile Include="scripts\Entities\Map\Player.ts" />
     <TypeScriptCompile Include="scripts\States\Battles\Battle.ts" />
     <TypeScriptCompile Include="scripts\States\DevMenu.tsx" />
