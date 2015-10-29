@@ -126,7 +126,7 @@
     <Content Include="bower_components\react\react-with-addons.min.js" />
     <Content Include="bower_components\react\react.js" />
     <Content Include="bower_components\react\react.min.js" />
-    <Content Include="scripts\Entities\Battle\Entity.js" />
+    <TypeScriptCompile Include="scripts\Entities\Battle\Entity.ts" />
     <Content Include="scripts\lib\phaser.js" />
     <Content Include="scripts\lib\phaser.min.js" />
     <Content Include="index.html" />
@@ -136,6 +136,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="scripts\app.ts" />
     <TypeScriptCompile Include="scripts\Entities\Battle\Enemies\Slime.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Battle\Status.ts" />
     <TypeScriptCompile Include="scripts\Entities\Map\Player.ts" />
     <TypeScriptCompile Include="scripts\ReactComponents\Dialog.tsx" />
     <TypeScriptCompile Include="scripts\ReactComponents\Menu.tsx" />
