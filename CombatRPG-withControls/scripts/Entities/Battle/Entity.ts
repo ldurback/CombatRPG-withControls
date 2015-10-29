@@ -2,10 +2,10 @@
     export namespace Entities {
         export namespace Battle {
             export class Entity {
-                function testState()
+                 testState()
                 {
-                    isAlive : boolean(false);
-                    isMoving : Boolean(false);
+                     var isAlive = false;
+                     var isMoving = false;
                     
                     if (isAlive != false)
                     {
