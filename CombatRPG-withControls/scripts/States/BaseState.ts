@@ -79,8 +79,8 @@ namespace CombatRPG {
                 var spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
                 var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-                spacebar.onDown.add(this.clickSelected, this);
-                enter.onDown.add(this.clickSelected, this);
+                spacebar.onDown.add(this.clickSelectedOrMessage, this);
+                enter.onDown.add(this.clickSelectedOrMessage, this);
             }
 
             private tearDownUIInput() {
@@ -100,7 +100,7 @@ namespace CombatRPG {
 
                 this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP).onDown.add(() => this.moveSelectedElementUp(), this);
                 this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN).onDown.add(() => this.moveSelectedElementDown(), this);
-                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => this.clickSelected(), this);
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => this.clickSelectedOrMessage(), this);
 
                 this.addGamepadButtonsStateSpecific(this.gamepad1);
             }
@@ -119,7 +119,8 @@ namespace CombatRPG {
 
             private moveSelectedElementUp() {
                 var currentSelected = $(".selected");
-                var prev = $(".selected").prev(".selectable");
+                var allSelectable = $(".selectable");
+                var prev = allSelectable.eq(allSelectable.index(currentSelected) - 1);
 
                 if (prev[0]) {
                     currentSelected.removeClass("selected");
@@ -129,7 +130,8 @@ namespace CombatRPG {
 
             private moveSelectedElementDown() {
                 var currentSelected = $(".selected");
-                var next = $(".selected").next(".selectable");
+                var allSelectable = $(".selectable");
+                var next = allSelectable.eq(allSelectable.index(currentSelected) + 1);
 
                 if (next[0]) {
                     currentSelected.removeClass("selected");
@@ -137,8 +139,13 @@ namespace CombatRPG {
                 }
             }
 
-            private clickSelected() {
-                $(".selected").click();
+            private clickSelectedOrMessage() {
+                var message = $(".message");
+
+                if (message[0])
+                    message.click();
+                else
+                    $(".selected").click();
             }
         }
     }

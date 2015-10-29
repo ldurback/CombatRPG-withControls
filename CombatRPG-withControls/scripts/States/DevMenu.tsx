@@ -43,7 +43,8 @@ namespace CombatRPG {
 
             runDemoConversation() {
                 var demoConversation = (<ReactComponents.Dialog key="demoConvo" onClose={() => {
-                    $("#dialogs").hide()
+                    $("#dialogs").hide();
+                    this.clearDialogs();
                 } }>
                     <div>This demo has nothing in it yet except for some text.
                         Click on the conversation box to continue.</div>
@@ -55,6 +56,13 @@ namespace CombatRPG {
                 React.render(demoConversation, target);
 
                 $("#dialogs").show();
+            }
+
+            clearDialogs() {
+                var clear = <div></div>;
+                var target = document.getElementById("dialogs");
+
+                React.render(clear, target);
             }
 
             private goToMainMenu() {
