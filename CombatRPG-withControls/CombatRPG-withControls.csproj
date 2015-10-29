@@ -141,6 +141,8 @@
     <TypeScriptCompile Include="scripts\ReactComponents\Dialog.tsx" />
     <TypeScriptCompile Include="scripts\ReactComponents\Menu.tsx" />
     <TypeScriptCompile Include="scripts\ReactComponents\Message.tsx" />
+    <TypeScriptCompile Include="scripts\Screens\MenuScreen.ts" />
+    <TypeScriptCompile Include="scripts\Screens\StatusMenu.tsx" />
     <TypeScriptCompile Include="scripts\States\Battles\Battle.ts" />
     <TypeScriptCompile Include="scripts\States\DevMenu.tsx" />
     <TypeScriptCompile Include="scripts\States\GameOver.tsx" />

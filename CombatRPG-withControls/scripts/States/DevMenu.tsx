@@ -19,6 +19,7 @@ namespace CombatRPG {
             private renderScreen() {
                 var menu = <div><b>Dev Menu</b>
                     <div className={this.game.highlightMenu ? "selectable selected link menu-link" : "selectable link menu-link"} onClick={e => { this.goToMainMenu() } }>Main Menu</div>
+                    <div className="selectable link menu-link" onClick={e => this.game.statusMenu.showMenu() }>Status Menu</div>
                     <ReactComponents.Menu titleClassName="selectable link menu-link" title="Conversations">
                         <ul>
                             <li><div className="selectable link menu-link" onClick={e => {

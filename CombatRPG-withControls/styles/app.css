@@ -118,3 +118,7 @@
     margin: 0;
     list-style-type: square;
 }
+
+#status-menu-screen {
+    background-color: black;
+}
