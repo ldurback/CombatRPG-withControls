@@ -1,16 +1,24 @@
 ﻿///<reference path="MenuScreen.ts" />
+///<reference path="Inventory.tsx" />
 
 namespace CombatRPG {
     export namespace Screens {
         export class StatusMenu {
             private game: Phaser.Game;
 
+            inMenu: boolean = false;
+
+            inventory: Inventory;
+
             constructor(game: Phaser.Game) {
                 this.game = game;
+                this.inventory = new Inventory(game);
             }
 
             public showMenu() {
                 this.game.paused = true;
+                this.inMenu = true;
+
                 this.createMenu();
             }
 
@@ -21,8 +29,12 @@ namespace CombatRPG {
                     <div> Defense: {this.game.player.status.defense}</div>
                     <br/>
                     <div>Gold: {this.game.player.gold}</div>
+                    <div className={this.game.highlightMenu ? "link selectable selected" : "link selectable"} onClick={e => {
+                        this.closeMenu();
+                        this.inventory.showMenu()
+                    } }>Inventory</div>
                     <hr/>
-                    <div className={this.game.highlightMenu ? "link selectable selected" : "link selectable"} onClick={e => this.closeMenu() }>Close</div>
+                    <div className="link selectable" onClick={e => this.closeMenu() }>Close</div>
                     </div>);
 
                 var target = document.getElementById("status-menu-screen");
@@ -33,7 +45,13 @@ namespace CombatRPG {
             }
 
             private closeMenu() {
+                var clear = <div></div>;
+                var target = document.getElementById("status-menu-screen");
+
+                React.render(clear, target);
+
                 $("#status-menu-screen").hide();
+                this.inMenu = false;
                 this.game.paused = false;
             }
         }

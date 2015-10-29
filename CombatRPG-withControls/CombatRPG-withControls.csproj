@@ -126,6 +126,8 @@
     <Content Include="bower_components\react\react-with-addons.min.js" />
     <Content Include="bower_components\react\react.js" />
     <Content Include="bower_components\react\react.min.js" />
+    <TypeScriptCompile Include="scripts\Entities\Battle\Enemies\BowOrc.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Battle\Enemies\Bullet.ts" />
     <TypeScriptCompile Include="scripts\Entities\Battle\Entity.ts" />
     <Content Include="scripts\lib\phaser.js" />
     <Content Include="scripts\lib\phaser.min.js" />
@@ -136,14 +138,28 @@
   <ItemGroup>
     <TypeScriptCompile Include="scripts\app.ts" />
     <TypeScriptCompile Include="scripts\Entities\Battle\Enemies\Slime.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Battle\Player.ts" />
     <TypeScriptCompile Include="scripts\Entities\Battle\Status.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Battle\Weapon.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Map\Girl.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Map\InvisibleBox.ts" />
     <TypeScriptCompile Include="scripts\Entities\Map\Player.ts" />
+    <TypeScriptCompile Include="scripts\Input\Battle.ts" />
+    <TypeScriptCompile Include="scripts\Items\Item.ts" />
+    <TypeScriptCompile Include="scripts\Items\ItemDictionary.ts" />
+    <TypeScriptCompile Include="scripts\Items\Potion.ts" />
     <TypeScriptCompile Include="scripts\ReactComponents\Dialog.tsx" />
+    <TypeScriptCompile Include="scripts\ReactComponents\ItemInventoryTable.tsx" />
+    <TypeScriptCompile Include="scripts\ReactComponents\ItemShopTable.tsx" />
     <TypeScriptCompile Include="scripts\ReactComponents\Menu.tsx" />
     <TypeScriptCompile Include="scripts\ReactComponents\Message.tsx" />
+    <TypeScriptCompile Include="scripts\Screens\Inventory.tsx" />
     <TypeScriptCompile Include="scripts\Screens\MenuScreen.ts" />
     <TypeScriptCompile Include="scripts\Screens\StatusMenu.tsx" />
     <TypeScriptCompile Include="scripts\States\Battles\Battle.ts" />
+    <TypeScriptCompile Include="scripts\States\Battles\BowOrcBattle.ts" />
+    <TypeScriptCompile Include="scripts\States\Battles\SlimeBattle.ts" />
+    <TypeScriptCompile Include="scripts\States\BattleWin.tsx" />
     <TypeScriptCompile Include="scripts\States\DevMenu.tsx" />
     <TypeScriptCompile Include="scripts\States\GameOver.tsx" />
     <TypeScriptCompile Include="scripts\States\BaseState.ts" />
@@ -153,8 +169,11 @@
     <TypeScriptCompile Include="scripts\lib\p2.d.ts" />
     <TypeScriptCompile Include="scripts\lib\phaser.d.ts" />
     <TypeScriptCompile Include="scripts\lib\pixi.d.ts" />
-    <TypeScriptCompile Include="scripts\States\Maps\EmptyMap.ts" />
-    <TypeScriptCompile Include="scripts\States\Maps\PlayerInput.ts" />
+    <TypeScriptCompile Include="scripts\States\Maps\BasicMap.tsx" />
+    <TypeScriptCompile Include="scripts\Input\Map.ts" />
+    <TypeScriptCompile Include="scripts\States\Maps\Map.ts" />
+    <TypeScriptCompile Include="scripts\States\Shops\PotionShop.tsx" />
+    <TypeScriptCompile Include="scripts\States\Shops\Shop.tsx" />
     <TypeScriptCompile Include="scripts\States\SplashScreen.tsx" />
     <TypeScriptCompile Include="scripts\typings\es6-collections\es6-collections.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
@@ -162,6 +181,7 @@
     <TypeScriptCompile Include="scripts\typings\react\react-global.d.ts" />
     <TypeScriptCompile Include="scripts\typings\react\react.d.ts" />
     <TypeScriptCompile Include="scripts\typings\tsd.d.ts" />
+    <TypeScriptCompile Include="scripts\Entities\Direction.ts" />
     <TypeScriptCompile Include="scripts\Utils\MapToArray.ts" />
     <TypeScriptCompile Include="scripts\VirtualGamepad.ts" />
   </ItemGroup>

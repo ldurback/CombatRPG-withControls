@@ -3,7 +3,7 @@
 
 namespace CombatRPG {
     export namespace States {
-        export class GameOverScreen extends BaseState {
+        export class GameOver extends BaseState {
             loadAssets() { }
 
             initialize() {
@@ -48,7 +48,7 @@ namespace CombatRPG {
             }
 
             private advanceToNextState() {
-                this.game.state.start("MainMenu", true, false);
+                this.game.state.start("SplashScreen", true, false);
             }
 
             destroy() {

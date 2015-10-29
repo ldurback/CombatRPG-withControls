@@ -120,7 +120,13 @@ namespace CombatRPG {
             private moveSelectedElementUp() {
                 var currentSelected = $(".selected");
                 var allSelectable = $(".selectable");
-                var prev = allSelectable.eq(allSelectable.index(currentSelected) - 1);
+                var prev: JQuery;
+                if (currentSelected[0]) {
+                    prev = allSelectable.eq(allSelectable.index(currentSelected) - 1);
+                }
+                else {
+                    prev = allSelectable.last();
+                }
 
                 if (prev[0]) {
                     currentSelected.removeClass("selected");
@@ -131,7 +137,16 @@ namespace CombatRPG {
             private moveSelectedElementDown() {
                 var currentSelected = $(".selected");
                 var allSelectable = $(".selectable");
-                var next = allSelectable.eq(allSelectable.index(currentSelected) + 1);
+                var next: JQuery;
+                if (currentSelected[0]) {
+                    next = allSelectable.eq(allSelectable.index(currentSelected) + 1);
+                }
+                else {
+                    next = allSelectable.first();
+                }
+
+                if (!next[0])
+                    next = allSelectable.first();
 
                 if (next[0]) {
                     currentSelected.removeClass("selected");
@@ -139,13 +154,18 @@ namespace CombatRPG {
                 }
             }
 
-            private clickSelectedOrMessage() {
+            public clickSelectedOrMessage() {
                 var message = $(".message");
 
                 if (message[0])
                     message.click();
                 else
                     $(".selected").click();
+            }
+
+            public removeSelected() {
+                var currentSelected = $(".selected");
+                currentSelected.removeClass("selected");
             }
         }
     }

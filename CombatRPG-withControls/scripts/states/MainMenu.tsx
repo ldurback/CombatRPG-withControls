@@ -1,8 +1,7 @@
 ﻿///<reference path="BaseState.ts" />
-///<reference path="Maps/EmptyMap.ts" />
+///<reference path="Maps/BasicMap.tsx" />
 
 ///<reference path="BaseState.ts" />
-///<reference path="Maps/EmptyMap.ts" />
 ///<reference path="DevMenu.tsx" />
 
 namespace CombatRPG {
@@ -11,7 +10,7 @@ namespace CombatRPG {
             loadAssets() {
                 this.load.image('background', 'assets/images/background.png');
 
-                this.game.state.add("EmptyMap", States.Maps.EmptyMap);
+                this.game.state.add("BasicMap", States.Maps.BasicMap);
                 this.game.state.add("DevMenu", States.DevMenu);
             }
 
@@ -40,7 +39,7 @@ namespace CombatRPG {
             }
 
             private startGame() {
-                this.game.state.start("EmptyMap", true, false);
+                this.game.state.start("BasicMap", true, false);
             }
 
             private startDevMenu() {

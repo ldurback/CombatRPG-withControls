@@ -1,5 +1,7 @@
 ﻿///<reference path="Game.ts" />
 
+var game: Phaser.Game;
+
 $(() => {
-    var game = new CombatRPG.Game();
+    game = new CombatRPG.Game();
 });

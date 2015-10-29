@@ -1,10 +1,6 @@
 ﻿namespace CombatRPG {
     export namespace Entities {
         export namespace Map {
-            enum Direction {
-                Up, Down, Left, Right
-            }
-
             export class Player extends Phaser.Sprite {
                 facing: Direction;
                 idle: boolean;
@@ -21,6 +17,13 @@
 
                     this.idle = true;
 
+                    this.moving = {
+                        up: false,
+                        down: false,
+                        left: false,
+                        right: false
+                    };
+
                     this.anchor.setTo(0.5, 0);
 
                     game.physics.arcade.enable(this);
@@ -34,13 +37,6 @@
                     this.animations.add('right', [143, 144, 145, 146, 147, 148, 149, 150, 151], 10, true);
 
                     game.add.existing(this);
-
-                    this.moving = {
-                        up: false,
-                        down: false,
-                        left: false,
-                        right: false
-                    };
                 }
 
                 update() {

@@ -1,4 +1,7 @@
-﻿///<reference path="states/Boot.ts" />
+﻿///<reference path="States/Boot.ts" />
+///<rerefence path="Entities/Battle/Status.ts" />
+///<reference path="Entities/Battle/Entity.ts" />
+///<reference path="Screens/StatusMenu.tsx" />
 
 namespace Phaser {
     export interface Game {
@@ -8,8 +11,25 @@ namespace Phaser {
         player: {
             status: CombatRPG.Entities.Battle.Status;
             gold: number;
+            items: Map<string, number>;
+
             battleEntity: CombatRPG.Entities.Battle.Entity;
         }
+
+        loot: {
+            gold: number;
+            items: Map<string, number>;
+        }
+
+        return: {
+            state: string;
+            position: {
+                x: number;
+                y: number;
+            };
+        }
+
+        inBattle: boolean;
 
         statusMenu: CombatRPG.Screens.StatusMenu;
     }
@@ -31,8 +51,22 @@ namespace CombatRPG {
                 },
 
                 gold: 0,
+                items: new Map<string, number>(),
 
                 battleEntity: null
+            };
+
+            this.loot = {
+                gold: 0,
+                items: new Map<string, number>()
+            };
+
+            this.return = {
+                state: null,
+                position: {
+                    x: null,
+                    y: null
+                }
             };
 
             this.statusMenu = new Screens.StatusMenu(this);
