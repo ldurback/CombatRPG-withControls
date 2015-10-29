@@ -22,7 +22,7 @@ namespace CombatRPG {
                     <br/>
                     <div>Gold: {this.game.player.gold}</div>
                     <hr/>
-                    <div className="link" onClick={e => this.closeMenu() }>Close</div>
+                    <div className={this.game.highlightMenu ? "link selectable selected" : "link selectable"} onClick={e => this.closeMenu() }>Close</div>
                     </div>);
 
                 var target = document.getElementById("status-menu-screen");
