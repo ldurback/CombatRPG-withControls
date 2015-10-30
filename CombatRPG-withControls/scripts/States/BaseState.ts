@@ -107,6 +107,8 @@ namespace CombatRPG {
                 this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => Utils.UINavigator.clickSelectedOrMessage());
 
                 this.addGamepadButtonsStateSpecific(this.gamepad1);
+
+                Utils.UINavigator.selectFirstSelectable();
             }
 
             addGamepadButtonsStateSpecific(gamepad: Phaser.SinglePad) { }
