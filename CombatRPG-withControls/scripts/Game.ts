@@ -7,23 +7,7 @@ namespace Phaser {
     export interface Game {
         highlightMenu: boolean;
         showVirtualGamepad: boolean;
-        data: {
-            player: {
-                status: CombatRPG.Entities.Battle.Status;
-                gold: number;
-                items: Map<string, number>;
-
-                battleEntity: CombatRPG.Entities.Battle.Entity;
-            }
-
-            return: {
-                state: string;
-                position: {
-                    x: number;
-                    y: number;
-                };
-            }
-        }
+        data: CombatRPG.GameData;
 
         loot: {
             gold: number;
@@ -43,31 +27,33 @@ namespace CombatRPG {
 
             this.state.add("Boot", States.Boot);
 
-            this.data.player = {
-                status: {
-                    currentHP: 10,
-                    maxHP: 10,
-                    strength: 2,
-                    defense: 2
+            this.data = {
+                player: {
+                    status: {
+                        currentHP: 10,
+                        maxHP: 10,
+                        strength: 2,
+                        defense: 2
+                    },
+
+                    gold: 100,
+                    items: new Map<string, number>(),
+
+                    battleEntity: null
                 },
 
-                gold: 100,
-                items: new Map<string, number>(),
-
-                battleEntity: null
+                return: {
+                    state: null,
+                    position: {
+                        x: null,
+                        y: null
+                    }
+                }
             };
 
             this.loot = {
                 gold: 0,
                 items: new Map<string, number>()
-            };
-
-            this.data.return = {
-                state: null,
-                position: {
-                    x: null,
-                    y: null
-                }
             };
 
             this.data.player.items.set("Potion", 2);

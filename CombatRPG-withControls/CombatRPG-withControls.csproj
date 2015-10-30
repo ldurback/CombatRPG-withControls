@@ -144,6 +144,8 @@
     <TypeScriptCompile Include="scripts\Entities\Map\Girl.ts" />
     <TypeScriptCompile Include="scripts\Entities\Map\InvisibleBox.ts" />
     <TypeScriptCompile Include="scripts\Entities\Map\Player.ts" />
+    <TypeScriptCompile Include="scripts\SaveData.ts" />
+    <TypeScriptCompile Include="scripts\GameData.ts" />
     <TypeScriptCompile Include="scripts\Input\Battle.ts" />
     <TypeScriptCompile Include="scripts\Items\Item.ts" />
     <TypeScriptCompile Include="scripts\Items\ItemDictionary.ts" />
@@ -182,6 +184,7 @@
     <TypeScriptCompile Include="scripts\typings\tsd.d.ts" />
     <TypeScriptCompile Include="scripts\Entities\Direction.ts" />
     <TypeScriptCompile Include="scripts\Utils\ClearHTMLElement.tsx" />
+    <TypeScriptCompile Include="scripts\Utils\DataManager.ts" />
     <TypeScriptCompile Include="scripts\Utils\MapToArray.ts" />
     <TypeScriptCompile Include="scripts\Utils\UINavigator.ts" />
     <TypeScriptCompile Include="scripts\Input\VirtualGamepad.ts" />
