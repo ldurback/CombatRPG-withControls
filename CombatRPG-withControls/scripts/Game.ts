@@ -76,4 +76,6 @@ namespace CombatRPG {
             this.state.start("Boot");
         }
     }
+
+    export var game: Phaser.Game;
 }

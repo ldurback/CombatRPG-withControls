@@ -12,6 +12,8 @@ namespace CombatRPG {
                     this.load.image('slime', 'assets/images/slime.png');
                     this.load.image('platform', 'assets/images/platform.png');
                     //this.load.image('background', 'assets/images/background.png');
+
+                    this.gameOverOnLose = true;
                 }
 
                 createScene() {

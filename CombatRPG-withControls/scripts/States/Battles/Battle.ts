@@ -20,6 +20,8 @@ namespace CombatRPG {
 
                 battleMenu: Phaser.Group;
 
+                gameOverOnLose: boolean;
+
                 loadAssets() {
                     this.load.spritesheet('character', 'assets/images/character.png', 64, 64);
 
@@ -54,7 +56,10 @@ namespace CombatRPG {
                     this.runCollisions(); 
 
                     if (!this.player.alive) {
-                        this.game.state.start('GameOver', true, false);
+                        if (this.gameOverOnLose)
+                            this.game.state.start('GameOver', true, false);
+                        else
+                            this.game.state.start(this.game.return.state, true, false);
                     }
 
                     if (this.enemies.getFirstAlive() == null) {

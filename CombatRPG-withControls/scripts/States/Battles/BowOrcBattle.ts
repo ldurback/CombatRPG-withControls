@@ -11,6 +11,8 @@ namespace CombatRPG {
                     this.load.image('bullet', 'assets/images/bullet.png');
                     this.load.image('platform', 'assets/images/platform.png');
                     //this.load.image('background', 'assets/images/background.png');
+
+                    this.gameOverOnLose = true;
                 }
 
                 createScene() {

@@ -84,6 +84,21 @@
                     });
                 }
 
+                var confirmDiv = <div className="selectable link"
+                    onClick={ e => {
+                    if (this.state.deal == ItemShopDealType.Buy)
+                        this.props.shop.buy(this.state.itemName);
+                    else if (this.state.deal == ItemShopDealType.Sell)
+                        this.props.shop.sell(this.state.itemName);
+
+                    this.setState({
+                        deal: this.state.deal,
+                        itemName: "",
+                        itemDescription: "",
+                        confirm: false
+                    });
+                } }>{(this.state.itemName ? "Yes" : "") }</div>;
+
                 return <div>
                     <div>{this.props.game.player.gold} Gold</div>
                     <span className={(this.state.deal != ItemShopDealType.Buy ? "unselectedOption" : "") + " link selectable"}
@@ -112,20 +127,8 @@
                     <div>{(this.state.itemName ? (this.state.deal == ItemShopDealType.Buy ? "Buy " : "") +
                         (this.state.deal == ItemShopDealType.Sell ? "Sell " : "") +
                         this.state.itemName + "?: " : "") + this.state.itemDescription}</div>
-                    <div onClick={ e => {
-                        if (this.state.deal == ItemShopDealType.Buy)
-                            this.props.shop.buy(this.state.itemName);
-                        else if (this.state.deal == ItemShopDealType.Sell)
-                            this.props.shop.sell(this.state.itemName);
-
-                        this.setState({
-                            deal: this.state.deal,
-                            itemName: "",
-                            itemDescription: "",
-                            confirm: false
-                        });
-                    } }>{(this.state.itemName ? "Yes" : "")}</div>
-                </div>
+                    {this.state.confirm ? confirmDiv : ""}
+                </div>;
             }
         }
     }
