@@ -31,10 +31,7 @@ namespace CombatRPG {
             }
 
             private exitScreen() {
-                var clear = <div></div>;
-                var target = document.getElementById("main-menu-screen");
-
-                React.render(clear, target);
+                Utils.clearHTMLElement(document.getElementById("main-menu-screen"));
                 $("#main-menu-screen").hide();
             }
 

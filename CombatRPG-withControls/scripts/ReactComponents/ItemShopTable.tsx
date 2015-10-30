@@ -4,6 +4,8 @@
             availableItems: string[];
             game: Phaser.Game;
             shop: States.Shops.Shop;
+
+            itemClassName?: string;
         }
 
         export enum ItemShopDealType {
@@ -35,7 +37,7 @@
                         var price: number = itemType.buyingPrice;
 
                         return <tr key={index}
-                            className={price <= this.props.game.player.gold ? "link" : "unavailable"}
+                            className={(price <= this.props.game.player.gold ? "link" : "unavailableToBuy") + " " + (this.props.itemClassName ? this.props.itemClassName : "")}
                             onClick={price <= this.props.game.player.gold ? e => {
                                 this.props.shop.buy(itemName); this.forceUpdate();
                             } : e => { } }
@@ -63,7 +65,7 @@
                         var price: number = itemType.sellingPrice;
 
                         return <tr key={index}
-                            className="link"
+                            className={"link" + this.props.itemClassName}
                             onClick={e => {
                                 this.props.shop.sell(itemName);
                                 this.forceUpdate();
@@ -82,7 +84,7 @@
 
                 return <div>
                     <div>{this.props.game.player.gold} Gold</div>
-                    <span className={this.state.deal != ItemShopDealType.Buy ? "unselected link" : "link"}
+                    <span className={(this.state.deal != ItemShopDealType.Buy ? "unselectedOption" : "") + " link selectable"}
                         onClick={ e => {
                             this.setState({
                                 deal: ItemShopDealType.Buy,
@@ -91,7 +93,7 @@
                         } }>Buy</span>
                     {" "}
                     <span
-                        className={this.state.deal != ItemShopDealType.Sell ? "unselected link" : "link"}
+                        className={(this.state.deal != ItemShopDealType.Sell ? "unselectedOption" : "") + " link selectable"}
                         onClick={ e => {
                             this.setState({
                                 deal: ItemShopDealType.Sell,

@@ -154,7 +154,6 @@
     <TypeScriptCompile Include="scripts\ReactComponents\Menu.tsx" />
     <TypeScriptCompile Include="scripts\ReactComponents\Message.tsx" />
     <TypeScriptCompile Include="scripts\Screens\Inventory.tsx" />
-    <TypeScriptCompile Include="scripts\Screens\MenuScreen.ts" />
     <TypeScriptCompile Include="scripts\Screens\StatusMenu.tsx" />
     <TypeScriptCompile Include="scripts\States\Battles\Battle.ts" />
     <TypeScriptCompile Include="scripts\States\Battles\BowOrcBattle.ts" />
@@ -182,8 +181,10 @@
     <TypeScriptCompile Include="scripts\typings\react\react.d.ts" />
     <TypeScriptCompile Include="scripts\typings\tsd.d.ts" />
     <TypeScriptCompile Include="scripts\Entities\Direction.ts" />
+    <TypeScriptCompile Include="scripts\Utils\ClearHTMLElement.tsx" />
     <TypeScriptCompile Include="scripts\Utils\MapToArray.ts" />
-    <TypeScriptCompile Include="scripts\VirtualGamepad.ts" />
+    <TypeScriptCompile Include="scripts\Utils\UINavigator.ts" />
+    <TypeScriptCompile Include="scripts\Input\VirtualGamepad.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />

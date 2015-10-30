@@ -122,3 +122,15 @@
 #status-menu-screen {
     background-color: black;
 }
+
+.disabledForUseItem {
+    color: gray;
+}
+
+.unselectedOption {
+    color: gray;
+}
+
+.unavailableToBuy {
+    color: gray;
+}

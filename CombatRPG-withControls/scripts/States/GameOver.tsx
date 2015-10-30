@@ -40,10 +40,7 @@ namespace CombatRPG {
             }
 
             private exitScreen() {
-                var clear = <div></div>;
-                var target = document.getElementById("game-over-screen");
-
-                React.render(clear, target);
+                Utils.clearHTMLElement(document.getElementById("game-over-screen"));
                 $("#game-over-screen").hide(); 
             }
 

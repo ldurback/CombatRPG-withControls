@@ -3,21 +3,22 @@
 namespace CombatRPG {
     export namespace States {
         export namespace Shops {
-            export abstract class Shop extends Phaser.State {
+            export abstract class Shop extends BaseState {
                 protected inventory: string[];
                 protected title: string;
 
                 protected abstract setTitleAndInventory();
 
-                create() {
+                initialize() {
                     this.setTitleAndInventory();
 
                     var shopText = <div><b>{this.title}</b>
                         <br />
                         <ReactComponents.ItemShopTable availableItems={this.inventory}
-                            game={this.game} shop={this} />
+                            game={this.game} shop={this}
+                            itemClassName="selectable" />
                         <hr />
-                        <div className="link" onClick={e => this.exitStore() }>Exit</div>
+                        <div className="link selectable" onClick={e => this.exitStore() }>Exit</div>
                     </div>
 
                     var target = document.getElementById("shop-menu-screen");

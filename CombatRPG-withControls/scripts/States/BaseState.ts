@@ -1,4 +1,4 @@
-﻿///<reference path="../VirtualGamepad.ts" />
+﻿///<reference path="../Input/VirtualGamepad.ts" />
 
 namespace CombatRPG {
     export namespace States {
@@ -7,7 +7,7 @@ namespace CombatRPG {
             cursors: Phaser.CursorKeys;
             gamepad1: Phaser.SinglePad;
 
-            virtualGamepad: VirtualGamepad;
+            virtualGamepad: Input.VirtualGamepad;
 
             preload() {
                 this.preloadBar = this.add.sprite(200, 250, 'preloadBar');
@@ -23,6 +23,10 @@ namespace CombatRPG {
                 this.initialize();
 
                 this.setupUIInput();
+
+                if (this.game.highlightMenu) {
+                    Utils.UINavigator.selectFirstSelectable();
+                }
             }
 
             shutdown() {
@@ -73,21 +77,21 @@ namespace CombatRPG {
 
                 this.gamepad1.addCallbacks(this, { onConnect: () => this.addGamepadButtons() });
 
-                this.cursors.up.onDown.add(this.moveSelectedElementUp, this);
-                this.cursors.down.onDown.add(this.moveSelectedElementDown, this);
+                this.cursors.up.onDown.add(Utils.UINavigator.moveSelectedElementUp);
+                this.cursors.down.onDown.add(Utils.UINavigator.moveSelectedElementDown);
 
                 var spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
                 var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-                spacebar.onDown.add(this.clickSelectedOrMessage, this);
-                enter.onDown.add(this.clickSelectedOrMessage, this);
+                spacebar.onDown.add(Utils.UINavigator.clickSelectedOrMessage);
+                enter.onDown.add(Utils.UINavigator.clickSelectedOrMessage);
             }
 
             private tearDownUIInput() {
                 this.cursors.up.onDown.removeAll(this);
                 this.cursors.down.onDown.removeAll(this);
-                this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.removeAll(this);
-                this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.removeAll(this);
+                this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.removeAll();
+                this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.removeAll();
 
                 if (this.gamepad1.connected)
                     this.removeGamepadButtons();
@@ -98,9 +102,9 @@ namespace CombatRPG {
             addGamepadButtons() {
                 this.game.highlightMenu = true;
 
-                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP).onDown.add(() => this.moveSelectedElementUp(), this);
-                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN).onDown.add(() => this.moveSelectedElementDown(), this);
-                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => this.clickSelectedOrMessage(), this);
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_UP).onDown.add(() => Utils.UINavigator.moveSelectedElementUp());
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_DPAD_DOWN).onDown.add(() => Utils.UINavigator.moveSelectedElementDown());
+                this.gamepad1.getButton(Phaser.Gamepad.XBOX360_A).onDown.add(() => Utils.UINavigator.clickSelectedOrMessage());
 
                 this.addGamepadButtonsStateSpecific(this.gamepad1);
             }
@@ -116,57 +120,6 @@ namespace CombatRPG {
             }
 
             removeGamepadButtonsStateSpecific(gamepad: Phaser.SinglePad) { }
-
-            private moveSelectedElementUp() {
-                var currentSelected = $(".selected");
-                var allSelectable = $(".selectable");
-                var prev: JQuery;
-                if (currentSelected[0]) {
-                    prev = allSelectable.eq(allSelectable.index(currentSelected) - 1);
-                }
-                else {
-                    prev = allSelectable.last();
-                }
-
-                if (prev[0]) {
-                    currentSelected.removeClass("selected");
-                    prev.addClass("selected");
-                }
-            }
-
-            private moveSelectedElementDown() {
-                var currentSelected = $(".selected");
-                var allSelectable = $(".selectable");
-                var next: JQuery;
-                if (currentSelected[0]) {
-                    next = allSelectable.eq(allSelectable.index(currentSelected) + 1);
-                }
-                else {
-                    next = allSelectable.first();
-                }
-
-                if (!next[0])
-                    next = allSelectable.first();
-
-                if (next[0]) {
-                    currentSelected.removeClass("selected");
-                    next.addClass("selected");
-                }
-            }
-
-            public clickSelectedOrMessage() {
-                var message = $(".message");
-
-                if (message[0])
-                    message.click();
-                else
-                    $(".selected").click();
-            }
-
-            public removeSelected() {
-                var currentSelected = $(".selected");
-                currentSelected.removeClass("selected");
-            }
         }
     }
 }

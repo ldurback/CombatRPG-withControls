@@ -8,6 +8,8 @@ namespace CombatRPG {
             disableUnusableOutsideBattle: boolean;
             allowUse: boolean;
 
+            itemClassName?: string;
+
             game: Phaser.Game;
         }
 
@@ -67,7 +69,7 @@ namespace CombatRPG {
                         disabled = true;
                     }
 
-                    return <tr className={disabled ? "disabledItem" : ""}
+                    return <tr className={(disabled ? "disabledForUseItem" : "") + " " + (this.props.itemClassName ? this.props.itemClassName : "")}
                         onClick={!disabled && this.props.allowUse ? e => { this.tryUseItem(nameAndAmount[0]) } : e => { } }
                         onMouseOver={ e => {
                             this.setState({

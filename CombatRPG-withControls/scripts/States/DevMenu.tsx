@@ -37,8 +37,8 @@ namespace CombatRPG {
                 var menu = <div><b>Dev Menu</b>
                     <div className={this.game.highlightMenu ? "selectable selected link menu-link" : "selectable link menu-link"} onClick={e => { this.goToMainMenu() } }>Main Menu</div>
                     <div className="selectable link menu-link" onClick={e => {
-                        this.exitScreen();
                         this.game.statusMenu.showMenu();
+                        this.exitScreen();
                     } }>Status Menu</div>
                     <ReactComponents.Menu titleClassName="selectable link menu-link" title="Conversations">
                         <ul>
@@ -85,10 +85,7 @@ namespace CombatRPG {
             }
 
             private exitScreen() {
-                var clear = <div></div>;
-                var target = document.getElementById("dev-menu-screen");
-
-                React.render(clear, target);
+                Utils.clearHTMLElement(document.getElementById("dev-menu-screen"));
                 $("#dev-menu-screen").hide();
 
                 this.rendered = false;
@@ -126,11 +123,7 @@ namespace CombatRPG {
 
             clearDialogs() {
                 $("#dialogs").hide();
-
-                var clear = <div></div>;
-                var target = document.getElementById("dialogs");
-
-                React.render(clear, target);
+                Utils.clearHTMLElement(document.getElementById("dialogs"));
             }
 
             private goToMainMenu() {

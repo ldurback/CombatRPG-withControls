@@ -42,10 +42,7 @@ namespace CombatRPG {
             }
 
             private exitScreen() {
-                var clear = <div></div>;
-                var target = document.getElementById("splash-screen");
-
-                React.render(clear, target);
+                Utils.clearHTMLElement(document.getElementById("splash-screen"));                
                 $("#splash-screen").hide();
             }
 

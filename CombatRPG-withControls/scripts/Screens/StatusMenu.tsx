@@ -1,5 +1,4 @@
-﻿///<reference path="MenuScreen.ts" />
-///<reference path="Inventory.tsx" />
+﻿///<reference path="Inventory.tsx" />
 
 namespace CombatRPG {
     export namespace Screens {
@@ -29,9 +28,8 @@ namespace CombatRPG {
                     <div> Defense: {this.game.player.status.defense}</div>
                     <br/>
                     <div>Gold: {this.game.player.gold}</div>
-                    <div className={this.game.highlightMenu ? "link selectable selected" : "link selectable"} onClick={e => {
-                        this.closeMenu();
-                        this.inventory.showMenu()
+                    <div className="link selectable" onClick={e => {
+                        this.launchInventory();
                     } }>Inventory</div>
                     <hr/>
                     <div className="link selectable" onClick={e => this.closeMenu() }>Close</div>
@@ -41,16 +39,23 @@ namespace CombatRPG {
 
                 React.render(statusMenuText, target);
 
+                Utils.UINavigator.selectFirstSelectable();
+
                 $("#status-menu-screen").show();
             }
 
-            private closeMenu() {
-                var clear = <div></div>;
-                var target = document.getElementById("status-menu-screen");
+            private launchInventory() {
+                this.clearScreen();
+                this.inventory.showMenu();
+            }
 
-                React.render(clear, target);
-
+            clearScreen() {
+                Utils.clearHTMLElement(document.getElementById("status-menu-screen"));
                 $("#status-menu-screen").hide();
+            }
+
+            private closeMenu() {
+                this.clearScreen();
                 this.inMenu = false;
                 this.game.paused = false;
             }
