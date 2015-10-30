@@ -16,7 +16,7 @@ namespace CombatRPG {
             }
 
             initialize() {
-                this.game.return.state = "DevMenu";
+                this.game.data.return.state = "DevMenu";
                 this.game.inBattle = false;
 
                 this.game.state.add("BasicMap", States.Maps.BasicMap);
@@ -65,7 +65,7 @@ namespace CombatRPG {
                         <ul><li><div className="selectable link menu-link" onClick={e => {
                             this.exitScreen();
 
-                            this.game.return.position = { x: 400, y: 400 };
+                            this.game.data.return.position = { x: 400, y: 400 };
                             this.game.state.start("BasicMap");
                         } }>Basic Map</div></li></ul>
                         </ReactComponents.Menu>

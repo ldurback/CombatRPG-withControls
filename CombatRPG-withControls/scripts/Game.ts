@@ -7,26 +7,27 @@ namespace Phaser {
     export interface Game {
         highlightMenu: boolean;
         showVirtualGamepad: boolean;
+        data: {
+            player: {
+                status: CombatRPG.Entities.Battle.Status;
+                gold: number;
+                items: Map<string, number>;
 
-        player: {
-            status: CombatRPG.Entities.Battle.Status;
-            gold: number;
-            items: Map<string, number>;
+                battleEntity: CombatRPG.Entities.Battle.Entity;
+            }
 
-            battleEntity: CombatRPG.Entities.Battle.Entity;
+            return: {
+                state: string;
+                position: {
+                    x: number;
+                    y: number;
+                };
+            }
         }
 
         loot: {
             gold: number;
             items: Map<string, number>;
-        }
-
-        return: {
-            state: string;
-            position: {
-                x: number;
-                y: number;
-            };
         }
 
         inBattle: boolean;
@@ -42,7 +43,7 @@ namespace CombatRPG {
 
             this.state.add("Boot", States.Boot);
 
-            this.player = {
+            this.data.player = {
                 status: {
                     currentHP: 10,
                     maxHP: 10,
@@ -61,7 +62,7 @@ namespace CombatRPG {
                 items: new Map<string, number>()
             };
 
-            this.return = {
+            this.data.return = {
                 state: null,
                 position: {
                     x: null,
@@ -69,7 +70,7 @@ namespace CombatRPG {
                 }
             };
 
-            this.player.items.set("Potion", 2);
+            this.data.player.items.set("Potion", 2);
 
             this.statusMenu = new Screens.StatusMenu(this);
 

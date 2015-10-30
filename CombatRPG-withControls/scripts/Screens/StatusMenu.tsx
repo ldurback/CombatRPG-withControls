@@ -23,11 +23,11 @@ namespace CombatRPG {
 
             private createMenu() {
                 var statusMenuText = (<div><b>Status Menu</b>
-                    <div> HP: {this.game.player.status.currentHP}/{this.game.player.status.maxHP}</div>
-                    <div>Strength: {this.game.player.status.strength}</div>
-                    <div> Defense: {this.game.player.status.defense}</div>
+                    <div> HP: {this.game.data.player.status.currentHP}/{this.game.data.player.status.maxHP}</div>
+                    <div>Strength: {this.game.data.player.status.strength}</div>
+                    <div> Defense: {this.game.data.player.status.defense}</div>
                     <br/>
-                    <div>Gold: {this.game.player.gold}</div>
+                    <div>Gold: {this.game.data.player.gold}</div>
                     <div className="link selectable" onClick={e => {
                         this.launchInventory();
                     } }>Inventory</div>

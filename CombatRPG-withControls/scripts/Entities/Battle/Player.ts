@@ -26,7 +26,7 @@ namespace CombatRPG {
                 constructor(game: Phaser.Game, x: number, y: number) {
                     super(game, x, y, 'character', 26);
 
-                    this.status = this.game.player.status;
+                    this.status = this.game.data.player.status;
                     this.moving = {
                         left: false,
                         right: false,

@@ -15,7 +15,7 @@ namespace CombatRPG {
 
             private createMenu() {
                 var statusMenuText = (<div><b>Inventory</b>
-                    <ReactComponents.ItemInventoryTable source={this.game.player.items} allowUse={true}
+                    <ReactComponents.ItemInventoryTable source={this.game.data.player.items} allowUse={true}
                         disableUnusableInBattle={this.game.inBattle}
                         disableUnusableOutsideBattle={!this.game.inBattle}
                         itemClassName="selectable link"

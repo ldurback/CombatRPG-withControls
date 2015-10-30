@@ -31,7 +31,7 @@ namespace CombatRPG {
                 private exitStore() {
                     $("#shop-menu-screen").hide();
 
-                    this.game.state.start(this.game.return.state);
+                    this.game.state.start(this.game.data.return.state);
                 }
 
                 buy(itemName: string) {
@@ -40,27 +40,27 @@ namespace CombatRPG {
 
                     var itemType: any = Items.itemDictionary[itemName];
 
-                    if (this.game.player.gold < itemType.buyingPrice)
+                    if (this.game.data.player.gold < itemType.buyingPrice)
                         throw "Error: Shop tried to let a player buy an item too expensive for him";
 
-                    this.game.player.gold -= itemType.buyingPrice;
+                    this.game.data.player.gold -= itemType.buyingPrice;
 
-                    if (!this.game.player.items.has(itemName))
-                        this.game.player.items.set(itemName, 0);
+                    if (!this.game.data.player.items.has(itemName))
+                        this.game.data.player.items.set(itemName, 0);
 
-                    this.game.player.items.set(itemName,
-                        this.game.player.items.get(itemName) + 1);
+                    this.game.data.player.items.set(itemName,
+                        this.game.data.player.items.get(itemName) + 1);
                 }
 
                 sell(itemName: string) {
                     var itemType: any = Items.itemDictionary[itemName];
 
-                    if (this.game.player.items.get(itemName) < 1)
+                    if (this.game.data.player.items.get(itemName) < 1)
                         throw "Error: Shop tried to let a player sell an item he didn't have";
 
-                    this.game.player.gold += itemType.sellingPrice;
-                    this.game.player.items.set(itemName,
-                        this.game.player.items.get(itemName) - 1);
+                    this.game.data.player.gold += itemType.sellingPrice;
+                    this.game.data.player.items.set(itemName,
+                        this.game.data.player.items.get(itemName) - 1);
                 }
             }
         }

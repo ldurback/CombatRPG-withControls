@@ -20,13 +20,13 @@ namespace CombatRPG {
 
                 initialize() {
                     this.game.inBattle = false;
-                    this.game.return.state = this.name();
+                    this.game.data.return.state = this.name();
                     this.game.physics.arcade.gravity.y = 0;
 
                     if (this.game.showVirtualGamepad)
                         this.createVirtualGamepad();
 
-                    this.player = new Entities.Map.Player(this.game, this.game.return.position.x, this.game.return.position.y);
+                    this.player = new Entities.Map.Player(this.game, this.game.data.return.position.x, this.game.data.return.position.y);
                     this.playerInput = new Input.Map(this.game, this.player, this.virtualGamepad);
 
                     this.createScene();

@@ -42,8 +42,8 @@
                         var price: number = itemType.buyingPrice;
 
                         return <tr key={index}
-                            className={(price <= this.props.game.player.gold ? "link" : "unavailableToBuy") + " " + (this.props.itemClassName ? this.props.itemClassName : "")}
-                            onClick={price <= this.props.game.player.gold ? e => {
+                            className={(price <= this.props.game.data.player.gold ? "link" : "unavailableToBuy") + " " + (this.props.itemClassName ? this.props.itemClassName : "")}
+                            onClick={price <= this.props.game.data.player.gold ? e => {
                                 this.setState({
                                     deal: ItemShopDealType.Buy,
                                     itemName: itemName,
@@ -57,7 +57,7 @@
                     });
                 }
                 else if (this.state.deal == ItemShopDealType.Sell) { // if we're selling, get the player's inventory's prices
-                    var playerInventory = Utils.mapToArray(this.props.game.player.items);
+                    var playerInventory = Utils.mapToArray(this.props.game.data.player.items);
                     items = playerInventory.map((itemNameAndAmount: [string, number], index: number, array: [string, number][]) => {
                         var itemName = itemNameAndAmount[0];
                         var itemAmount = itemNameAndAmount[1];
@@ -100,7 +100,7 @@
                 } }>{(this.state.itemName ? "Yes" : "") }</div>;
 
                 return <div>
-                    <div>{this.props.game.player.gold} Gold</div>
+                    <div>{this.props.game.data.player.gold} Gold</div>
                     <span className={(this.state.deal != ItemShopDealType.Buy ? "unselectedOption" : "") + " link selectable"}
                         onClick={ e => {
                             this.setState({

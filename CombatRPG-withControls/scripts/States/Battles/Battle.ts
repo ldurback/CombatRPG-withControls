@@ -41,7 +41,7 @@ namespace CombatRPG {
 
                     this.player = new Entities.Battle.Player(this.game, -100, -100);
                     this.playerInput = new Input.Battle(this.game, this.player, this.virtualGamepad);
-                    this.game.player.battleEntity = this.player;
+                    this.game.data.player.battleEntity = this.player;
 
                     this.createScene();
 
@@ -59,7 +59,7 @@ namespace CombatRPG {
                         if (this.gameOverOnLose)
                             this.game.state.start('GameOver', true, false);
                         else
-                            this.game.state.start(this.game.return.state, true, false);
+                            this.game.state.start(this.game.data.return.state, true, false);
                     }
 
                     if (this.enemies.getFirstAlive() == null) {

@@ -23,7 +23,7 @@ namespace CombatRPG {
             }
 
             tryUseItem(itemName: string) {
-                var itemAmount: number = this.props.game.player.items.get(itemName);
+                var itemAmount: number = this.props.game.data.player.items.get(itemName);
                 if (itemAmount <= 0)
                     return; //failed
 
@@ -32,13 +32,13 @@ namespace CombatRPG {
                 var item: Items.Item = (new itemType(this.props.game)) as Items.Item;
 
                 if (this.props.game.inBattle) {
-                    item.inBattleUse(this.props.game.player.battleEntity);
+                    item.inBattleUse(this.props.game.data.player.battleEntity);
                 }
                 else {
                     item.outsideBattleUse();
                 }
 
-                this.props.game.player.items.set(itemName, itemAmount - 1);
+                this.props.game.data.player.items.set(itemName, itemAmount - 1);
 
                 this.forceUpdate();
             }

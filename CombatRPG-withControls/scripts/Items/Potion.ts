@@ -20,7 +20,7 @@ namespace CombatRPG {
             }
 
             outsideBattleUse() {
-                var playerStats: Entities.Battle.Status = this.game.player.status;
+                var playerStats: Entities.Battle.Status = this.game.data.player.status;
 
                 playerStats.currentHP += (playerStats.maxHP / 5);
                 if (playerStats.currentHP > playerStats.maxHP)

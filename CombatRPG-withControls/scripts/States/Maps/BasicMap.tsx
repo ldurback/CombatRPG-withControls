@@ -44,7 +44,7 @@ namespace CombatRPG {
                 setupBattleTimer() {
                     this.battleTimer = this.game.time.create(true);
                     this.battleTimer.add(Math.random() * 9000 + 1000, () => {
-                        this.game.return.position = {
+                        this.game.data.return.position = {
                             x: this.player.x,
                             y: this.player.y
                         };
@@ -73,7 +73,7 @@ namespace CombatRPG {
                     var dialog = (<ReactComponents.Dialog key="shopkeepConvo" onClose= {() => {
                         $("#dialogs").hide()
 
-                        this.game.return.position = {
+                        this.game.data.return.position = {
                             x: this.player.x,
                             y: this.player.y
                         };
