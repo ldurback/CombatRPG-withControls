@@ -50,7 +50,7 @@ namespace CombatRPG {
                     defense: 2
                 },
 
-                gold: 0,
+                gold: 100,
                 items: new Map<string, number>(),
 
                 battleEntity: null
@@ -68,6 +68,8 @@ namespace CombatRPG {
                     y: null
                 }
             };
+
+            this.player.items.set("Potion", 2);
 
             this.statusMenu = new Screens.StatusMenu(this);
 

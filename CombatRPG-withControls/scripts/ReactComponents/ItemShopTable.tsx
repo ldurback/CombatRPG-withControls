@@ -15,7 +15,9 @@
 
         interface ItemShopTableState {
             deal: ItemShopDealType;
-            itemNameAndDescription: string;
+            itemName: string;
+            itemDescription: string;
+            confirm: boolean;
         }
 
         export class ItemShopTable extends React.Component<ItemShopTableProps, ItemShopTableState> {
@@ -24,7 +26,10 @@
 
                 this.state = {
                     deal: ItemShopDealType.Buy,
-                    itemNameAndDescription: ""
+                    itemName: "",
+                    itemDescription: "",
+
+                    confirm: false
                 };
             }
 
@@ -39,14 +44,13 @@
                         return <tr key={index}
                             className={(price <= this.props.game.player.gold ? "link" : "unavailableToBuy") + " " + (this.props.itemClassName ? this.props.itemClassName : "")}
                             onClick={price <= this.props.game.player.gold ? e => {
-                                this.props.shop.buy(itemName); this.forceUpdate();
-                            } : e => { } }
-                            onMouseOver={e =>
                                 this.setState({
-                                    deal: this.state.deal,
-                                    itemNameAndDescription: itemName + ": " + itemType.description
+                                    deal: ItemShopDealType.Buy,
+                                    itemName: itemName,
+                                    itemDescription: itemType.description,
+                                    confirm: true
                                 })
-                            }>
+                            } : e => { } }>
                             <td>{itemName}</td>
                             <td>{price} Gold</td>
                         </tr>
@@ -65,17 +69,15 @@
                         var price: number = itemType.sellingPrice;
 
                         return <tr key={index}
-                            className={"link" + this.props.itemClassName}
+                            className={"link" + " " + (this.props.itemClassName ? this.props.itemClassName : "")}
                             onClick={e => {
-                                this.props.shop.sell(itemName);
-                                this.forceUpdate();
-                            } }
-                            onMouseOver={e =>
                                 this.setState({
-                                    deal: this.state.deal,
-                                    itemNameAndDescription: itemName + ": " + itemType.description
+                                    deal: ItemShopDealType.Sell,
+                                    itemName: itemName,
+                                    itemDescription: itemType.description,
+                                    confirm: true
                                 })
-                            }>
+                            } }>
                             <td>{itemName} ({itemAmount})</td>
                             <td>{price} Gold Each</td>
                         </tr>
@@ -88,7 +90,9 @@
                         onClick={ e => {
                             this.setState({
                                 deal: ItemShopDealType.Buy,
-                                itemNameAndDescription: ""
+                                itemName: "",
+                                itemDescription: "",
+                                confirm: false
                             })
                         } }>Buy</span>
                     {" "}
@@ -97,13 +101,30 @@
                         onClick={ e => {
                             this.setState({
                                 deal: ItemShopDealType.Sell,
-                                itemNameAndDescription: ""
+                                itemName: "",
+                                itemDescription: "",
+                                confirm: false
                             });
                         } }>Sell</span>
                     <hr />
                     <table><tbody>{items}</tbody></table>
-                    {this.state.itemNameAndDescription != "" ? <hr /> : ""}
-                    <div>{this.state.itemNameAndDescription}</div>
+                    {this.state.itemName != "" ? <hr /> : ""}
+                    <div>{(this.state.itemName ? (this.state.deal == ItemShopDealType.Buy ? "Buy " : "") +
+                        (this.state.deal == ItemShopDealType.Sell ? "Sell " : "") +
+                        this.state.itemName + "?: " : "") + this.state.itemDescription}</div>
+                    <div onClick={ e => {
+                        if (this.state.deal == ItemShopDealType.Buy)
+                            this.props.shop.buy(this.state.itemName);
+                        else if (this.state.deal == ItemShopDealType.Sell)
+                            this.props.shop.sell(this.state.itemName);
+
+                        this.setState({
+                            deal: this.state.deal,
+                            itemName: "",
+                            itemDescription: "",
+                            confirm: false
+                        });
+                    } }>{(this.state.itemName ? "Yes" : "")}</div>
                 </div>
             }
         }
