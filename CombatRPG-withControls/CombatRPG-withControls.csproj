@@ -148,6 +148,7 @@
     <TypeScriptCompile Include="scripts\Items\Item.ts" />
     <TypeScriptCompile Include="scripts\Items\ItemDictionary.ts" />
     <TypeScriptCompile Include="scripts\Items\Potion.ts" />
+    <TypeScriptCompile Include="scripts\RComs\SaveLoad\ShowData.tsx" />
     <TypeScriptCompile Include="scripts\RComs\Text\Dialog.tsx" />
     <TypeScriptCompile Include="scripts\RComs\ItemDisplays\InventoryTable.tsx" />
     <TypeScriptCompile Include="scripts\RComs\ItemDisplays\ShopTable.tsx" />
