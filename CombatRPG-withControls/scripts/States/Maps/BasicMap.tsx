@@ -6,6 +6,8 @@
 
 ///<reference path="../../entities/map/Girl.ts" />
 ///<reference path="../../entities/map/InvisibleBox.ts" />
+///<reference path="../../RComs/Text/Dialog.tsx" />
+///<reference path="../../RComs/Text/Message.tsx" />
 
 namespace CombatRPG {
     export namespace States {
@@ -70,7 +72,7 @@ namespace CombatRPG {
                 }
 
                 runShopConversation() {
-                    var dialog = (<ReactComponents.Dialog key="shopkeepConvo" onClose= {() => {
+                    var dialog = (<RComs.Text.Dialog key="shopkeepConvo" onClose= {() => {
                         $("#dialogs").hide()
 
                         this.game.data.return.position = {
@@ -80,8 +82,8 @@ namespace CombatRPG {
 
                         this.game.state.start("PotionShop");
                     }}>
-                        <ReactComponents.Message name= "Girl">Hello!  Won't you buy something?</ReactComponents.Message>
-                        </ReactComponents.Dialog>);
+                        <RComs.Text.Message name= "Girl">Hello!  Won't you buy something?</RComs.Text.Message>
+                        </RComs.Text.Dialog>);
 
                     var target = document.getElementById("dialogs");
 

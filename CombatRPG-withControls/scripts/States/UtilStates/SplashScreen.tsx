@@ -3,7 +3,7 @@
 
 namespace CombatRPG {
     export namespace States {
-        export namespace Util {
+        export namespace UtilStates {
             export class SplashScreen extends BaseState {
                 loadAssets() {
                     this.game.state.add("MainMenu", MainMenu);

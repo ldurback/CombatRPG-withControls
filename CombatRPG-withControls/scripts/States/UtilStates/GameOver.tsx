@@ -3,7 +3,7 @@
 
 namespace CombatRPG {
     export namespace States {
-        export namespace Util {
+        export namespace UtilStates {
             export class GameOver extends BaseState {
                 loadAssets() { }
 

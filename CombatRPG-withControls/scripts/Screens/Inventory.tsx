@@ -1,4 +1,4 @@
-﻿///<reference path="../ReactComponents/ItemInventoryTable.tsx" />
+﻿///<reference path="../RComs/ItemDisplays/InventoryTable.tsx" />
 
 namespace CombatRPG {
     export namespace Screens {
@@ -15,7 +15,7 @@ namespace CombatRPG {
 
             private createMenu() {
                 var statusMenuText = (<div><b>Inventory</b>
-                    <ReactComponents.ItemInventoryTable source={this.game.data.player.items} allowUse={true}
+                    <RComs.ItemDisplays.InventoryTable source={this.game.data.player.items} allowUse={true}
                         disableUnusableInBattle={this.game.inBattle}
                         disableUnusableOutsideBattle={!this.game.inBattle}
                         itemClassName="selectable link"

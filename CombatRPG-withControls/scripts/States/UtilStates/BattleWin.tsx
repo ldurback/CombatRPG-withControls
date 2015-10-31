@@ -1,9 +1,9 @@
 ﻿///<reference path="../../lib/phaser.d.ts" />
-///<reference path="../../ReactComponents/ItemInventoryTable.tsx" />
+///<reference path="../../RComs/ItemDisplays/InventoryTable.tsx" />
 
 namespace CombatRPG {
     export namespace States {
-        export namespace Util {
+        export namespace UtilStates {
             export class BattleWin extends Phaser.State {
                 create() {
                     this.renderLootScreen();
@@ -29,7 +29,7 @@ namespace CombatRPG {
                 renderLootScreen() {
                     var battleWonText = <div><b>Loot</b>
                     <div>{this.game.loot.gold} Gold</div>
-                    <ReactComponents.ItemInventoryTable
+                    <RComs.ItemDisplays.InventoryTable
                         game={this.game}
                         source={this.game.loot.items}
                         allowUse={false}

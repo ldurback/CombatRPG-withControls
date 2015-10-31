@@ -25,8 +25,8 @@ namespace CombatRPG {
                 loadAssets() {
                     this.load.spritesheet('character', 'assets/images/character.png', 64, 64);
 
-                    this.game.state.add("BattleWin", Util.BattleWin);
-                    this.game.state.add("GameOver", Util.GameOver);
+                    this.game.state.add("BattleWin", UtilStates.BattleWin);
+                    this.game.state.add("GameOver", UtilStates.GameOver);
 
                     this.battleSpecificLoadAssets();
                 }

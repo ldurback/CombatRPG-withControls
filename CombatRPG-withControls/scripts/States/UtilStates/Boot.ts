@@ -2,7 +2,7 @@
 
 namespace CombatRPG {
     export namespace States {
-        export namespace Util {
+        export namespace UtilStates {
             export class Boot extends Phaser.State {
                 preload() {
                     this.load.image('preloadBar', 'assets/images/loader.png');

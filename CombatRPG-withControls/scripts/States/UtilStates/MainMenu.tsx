@@ -5,7 +5,7 @@
 
 namespace CombatRPG {
     export namespace States {
-        export namespace Util {
+        export namespace UtilStates {
             export class MainMenu extends BaseState {
                 loadAssets() {
                     this.load.image('background', 'assets/images/background.png');

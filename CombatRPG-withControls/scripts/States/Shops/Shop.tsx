@@ -1,4 +1,4 @@
-﻿///<reference path="../../ReactComponents/ItemShopTable.tsx" />
+﻿///<reference path="../../RComs/ItemDisplays/ShopTable.tsx" />
 
 namespace CombatRPG {
     export namespace States {
@@ -14,7 +14,7 @@ namespace CombatRPG {
 
                     var shopText = <div><b>{this.title}</b>
                         <br />
-                        <ReactComponents.ItemShopTable availableItems={this.inventory}
+                        <RComs.ItemDisplays.ShopTable availableItems={this.inventory}
                             game={this.game} shop={this}
                             itemClassName="selectable" />
                         <hr />

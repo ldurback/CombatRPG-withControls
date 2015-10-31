@@ -1,4 +1,4 @@
-﻿///<reference path="States/Util/Boot.ts" />
+﻿///<reference path="States/UtilStates/Boot.ts" />
 ///<rerefence path="Entities/Battle/Status.ts" />
 ///<reference path="Entities/Battle/Entity.ts" />
 ///<reference path="Screens/StatusMenu.tsx" />
@@ -26,7 +26,7 @@ namespace CombatRPG {
         constructor() {
             super(800, 600, Phaser.AUTO, 'content', null);
 
-            this.state.add("Boot", States.Util.Boot);
+            this.state.add("Boot", States.UtilStates.Boot);
 
             this.data = {
                 player: {
