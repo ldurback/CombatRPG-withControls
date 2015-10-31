@@ -41,6 +41,16 @@
             static deleteSave(key: string) {
                 localStorage.removeItem(key);
             }
+
+            static getSaveNames() {
+                var saveNames: Array<string> = new Array<string>();
+
+                for (var i = 0; i < localStorage.length; i++) {
+                    saveNames.push(localStorage.key(i));
+                }
+
+                return saveNames;
+            }
         }
     }
 }

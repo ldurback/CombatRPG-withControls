@@ -1,13 +1,14 @@
-﻿///<reference path="States/Boot.ts" />
+﻿///<reference path="States/Util/Boot.ts" />
 ///<rerefence path="Entities/Battle/Status.ts" />
 ///<reference path="Entities/Battle/Entity.ts" />
 ///<reference path="Screens/StatusMenu.tsx" />
+///<reference path="Utils/GameData.ts" />
 
 namespace Phaser {
     export interface Game {
         highlightMenu: boolean;
         showVirtualGamepad: boolean;
-        data: CombatRPG.GameData;
+        data: CombatRPG.Utils.GameData;
 
         loot: {
             gold: number;
@@ -25,7 +26,7 @@ namespace CombatRPG {
         constructor() {
             super(800, 600, Phaser.AUTO, 'content', null);
 
-            this.state.add("Boot", States.Boot);
+            this.state.add("Boot", States.Util.Boot);
 
             this.data = {
                 player: {
